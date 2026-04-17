@@ -1,0 +1,15 @@
+#-----------------------------------------------------------
+# Vivado v2022.2 (64-bit)
+# SW Build 3671981 on Fri Oct 14 05:00:03 MDT 2022
+# IP Build 3669848 on Fri Oct 14 08:30:02 MDT 2022
+# Start of session at: Tue Jun 11 15:59:08 2024
+# Process ID: 16300
+# Current directory: D:/2024/Driver/Development/FW/FPGA_part/targeting
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent13404 D:\2024\Driver\Development\FW\FPGA_part\targeting\servo_encoder_v1_0.xpr
+# Log file: D:/2024/Driver/Development/FW/FPGA_part/targeting/vivado.log
+# Journal file: D:/2024/Driver/Development/FW/FPGA_part/targeting\vivado.jou
+# Running On: DESKTOP-B6IK1LQ, OS: Windows, CPU Frequency: 2112 MHz, CPU Physical cores: 12, Host memory: 34192 MB
+#-----------------------------------------------------------
+start_gui
+open_project D:/2024/Driver/Development/FW/FPGA_part/targeting/servo_encoder_v1_0.xpr
+update_compile_order -fileset sources_1

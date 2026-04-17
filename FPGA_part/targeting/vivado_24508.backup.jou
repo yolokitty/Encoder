@@ -1,0 +1,77 @@
+#-----------------------------------------------------------
+# Vivado v2022.2 (64-bit)
+# SW Build 3671981 on Fri Oct 14 05:00:03 MDT 2022
+# IP Build 3669848 on Fri Oct 14 08:30:02 MDT 2022
+# Start of session at: Mon Jun 10 14:36:52 2024
+# Process ID: 24508
+# Current directory: D:/2024/Driver/Development/FW/FPGA_part/targeting
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent2204 D:\2024\Driver\Development\FW\FPGA_part\targeting\servo_encoder_v1_0.xpr
+# Log file: D:/2024/Driver/Development/FW/FPGA_part/targeting/vivado.log
+# Journal file: D:/2024/Driver/Development/FW/FPGA_part/targeting\vivado.jou
+# Running On: DESKTOP-B6IK1LQ, OS: Windows, CPU Frequency: 2112 MHz, CPU Physical cores: 12, Host memory: 34192 MB
+#-----------------------------------------------------------
+start_gui
+open_project D:/2024/Driver/Development/FW/FPGA_part/targeting/servo_encoder_v1_0.xpr
+update_compile_order -fileset sources_1
+open_hw_manager
+connect_hw_server -allow_non_jtag
+open_hw_target
+disconnect_hw_server localhost:3121
+connect_hw_server -allow_non_jtag
+open_hw_target
+close_hw_target {localhost:3121/xilinx_tcf/Xilinx/000013bd20ed01}
+disconnect_hw_server localhost:3121
+connect_hw_server -allow_non_jtag
+open_hw_target
+set_property PROGRAM.FILE {D:/2024/Driver/Development/FW/FPGA_part/targeting/servo_encoder_v1_0.runs/impl_1/servo_enc_v1_0.bit} [get_hw_devices xc7s15_0]
+current_hw_device [get_hw_devices xc7s15_0]
+refresh_hw_device -update_hw_probes false [lindex [get_hw_devices xc7s15_0] 0]
+create_hw_cfgmem -hw_device [get_hw_devices xc7s15_0] -mem_dev [lindex [get_cfgmem_parts {is25lp032d-spi-x1_x2_x4}] 0]
+close_hw_target {localhost:3121/xilinx_tcf/Xilinx/000013bd20ed01}
+disconnect_hw_server localhost:3121
+connect_hw_server -allow_non_jtag
+open_hw_target
+set_property PROGRAM.FILE {D:/2024/Driver/Development/FW/FPGA_part/targeting/servo_encoder_v1_0.runs/impl_1/servo_enc_v1_0.bit} [get_hw_devices xc7s15_0]
+current_hw_device [get_hw_devices xc7s15_0]
+refresh_hw_device -update_hw_probes false [lindex [get_hw_devices xc7s15_0] 0]
+create_hw_cfgmem -hw_device [get_hw_devices xc7s15_0] -mem_dev [lindex [get_cfgmem_parts {is25lp032d-spi-x1_x2_x4}] 0]
+set_property PROGRAM.ADDRESS_RANGE  {use_file} [ get_property PROGRAM.HW_CFGMEM [lindex [get_hw_devices xc7s15_0] 0]]
+set_property PROGRAM.FILES [list "D:/2024/Driver/Development/FW/FPGA_part/Result/drv_fpga_v2024060806.mcs" ] [ get_property PROGRAM.HW_CFGMEM [lindex [get_hw_devices xc7s15_0] 0]]
+set_property PROGRAM.PRM_FILE {} [ get_property PROGRAM.HW_CFGMEM [lindex [get_hw_devices xc7s15_0] 0]]
+set_property PROGRAM.UNUSED_PIN_TERMINATION {pull-none} [ get_property PROGRAM.HW_CFGMEM [lindex [get_hw_devices xc7s15_0] 0]]
+set_property PROGRAM.BLANK_CHECK  0 [ get_property PROGRAM.HW_CFGMEM [lindex [get_hw_devices xc7s15_0] 0]]
+set_property PROGRAM.ERASE  1 [ get_property PROGRAM.HW_CFGMEM [lindex [get_hw_devices xc7s15_0] 0]]
+set_property PROGRAM.CFG_PROGRAM  1 [ get_property PROGRAM.HW_CFGMEM [lindex [get_hw_devices xc7s15_0] 0]]
+set_property PROGRAM.VERIFY  1 [ get_property PROGRAM.HW_CFGMEM [lindex [get_hw_devices xc7s15_0] 0]]
+set_property PROGRAM.CHECKSUM  0 [ get_property PROGRAM.HW_CFGMEM [lindex [get_hw_devices xc7s15_0] 0]]
+startgroup 
+create_hw_bitstream -hw_device [lindex [get_hw_devices xc7s15_0] 0] [get_property PROGRAM.HW_CFGMEM_BITFILE [ lindex [get_hw_devices xc7s15_0] 0]]; program_hw_devices [lindex [get_hw_devices xc7s15_0] 0]; refresh_hw_device [lindex [get_hw_devices xc7s15_0] 0];
+program_hw_cfgmem -hw_cfgmem [ get_property PROGRAM.HW_CFGMEM [lindex [get_hw_devices xc7s15_0] 0]]
+endgroup
+boot_hw_device  [lindex [get_hw_devices xc7s15_0] 0]
+refresh_hw_device [lindex [get_hw_devices xc7s15_0] 0]
+close_hw_target {localhost:3121/xilinx_tcf/Xilinx/000013bd20ed01}
+disconnect_hw_server localhost:3121
+connect_hw_server -allow_non_jtag
+open_hw_target
+set_property PROGRAM.FILE {D:/2024/Driver/Development/FW/FPGA_part/targeting/servo_encoder_v1_0.runs/impl_1/servo_enc_v1_0.bit} [get_hw_devices xc7s15_0]
+current_hw_device [get_hw_devices xc7s15_0]
+refresh_hw_device -update_hw_probes false [lindex [get_hw_devices xc7s15_0] 0]
+create_hw_cfgmem -hw_device [get_hw_devices xc7s15_0] -mem_dev [lindex [get_cfgmem_parts {is25lp032d-spi-x1_x2_x4}] 0]
+set_property PROGRAM.ADDRESS_RANGE  {use_file} [ get_property PROGRAM.HW_CFGMEM [lindex [get_hw_devices xc7s15_0] 0]]
+set_property PROGRAM.FILES [list "D:/2024/Driver/Development/FW/FPGA_part/Result/drv_fpga_v2024060806.mcs" ] [ get_property PROGRAM.HW_CFGMEM [lindex [get_hw_devices xc7s15_0] 0]]
+set_property PROGRAM.PRM_FILE {} [ get_property PROGRAM.HW_CFGMEM [lindex [get_hw_devices xc7s15_0] 0]]
+set_property PROGRAM.UNUSED_PIN_TERMINATION {pull-none} [ get_property PROGRAM.HW_CFGMEM [lindex [get_hw_devices xc7s15_0] 0]]
+set_property PROGRAM.BLANK_CHECK  0 [ get_property PROGRAM.HW_CFGMEM [lindex [get_hw_devices xc7s15_0] 0]]
+set_property PROGRAM.ERASE  1 [ get_property PROGRAM.HW_CFGMEM [lindex [get_hw_devices xc7s15_0] 0]]
+set_property PROGRAM.CFG_PROGRAM  1 [ get_property PROGRAM.HW_CFGMEM [lindex [get_hw_devices xc7s15_0] 0]]
+set_property PROGRAM.VERIFY  1 [ get_property PROGRAM.HW_CFGMEM [lindex [get_hw_devices xc7s15_0] 0]]
+set_property PROGRAM.CHECKSUM  0 [ get_property PROGRAM.HW_CFGMEM [lindex [get_hw_devices xc7s15_0] 0]]
+startgroup 
+create_hw_bitstream -hw_device [lindex [get_hw_devices xc7s15_0] 0] [get_property PROGRAM.HW_CFGMEM_BITFILE [ lindex [get_hw_devices xc7s15_0] 0]]; program_hw_devices [lindex [get_hw_devices xc7s15_0] 0]; refresh_hw_device [lindex [get_hw_devices xc7s15_0] 0];
+program_hw_cfgmem -hw_cfgmem [ get_property PROGRAM.HW_CFGMEM [lindex [get_hw_devices xc7s15_0] 0]]
+endgroup
+boot_hw_device  [lindex [get_hw_devices xc7s15_0] 0]
+refresh_hw_device [lindex [get_hw_devices xc7s15_0] 0]
+close_hw_target {localhost:3121/xilinx_tcf/Xilinx/000013bd20ed01}
+disconnect_hw_server localhost:3121

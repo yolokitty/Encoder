@@ -1,0 +1,11 @@
+===================================
+Configuration Memory information
+===================================
+File Format        MCS
+Interface          SPIX1
+Size               4M
+Start Address      0x00000000
+End Address        0x003FFFFF
+
+Addr1         Addr2         Date                    File(s)
+0x00000000    0x000838DB    Jun  8 23:23:56 2024    C:/UserData/work_git/GuestProject/PrestoSolution/EncoderFPGA/FPGA_part/targeting/servo_encoder_v1_0.runs/impl_1/servo_enc_v1_0.bit

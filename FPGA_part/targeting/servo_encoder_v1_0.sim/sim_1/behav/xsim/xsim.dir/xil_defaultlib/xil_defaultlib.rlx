@@ -1,0 +1,11 @@
+0.7
+2020.2
+Nov 14 2025
+19:37:27
+C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/delta_sigma.vhd,1776134718,vhdl,,,,delta_sigma,,,,,,,,
+C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/emif_con.vhd,1776134718,vhdl,,,,emif_con,,,,,,,,
+C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/servo_enc_lib_v1_0.vhd,1776134718,vhdl,C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/delta_sigma.vhd;C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/emif_con.vhd;C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/servo_enc_v1_0.vhd;C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/servo_encoder_con.vhd;C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/tamakawa_interface.vhd,,,typedef_servo_enc,,,,,,,,
+C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/servo_enc_v1_0.vhd,1776134718,vhdl,,,,servo_enc_v1_0,,,,,,,,
+C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/servo_encoder_con.vhd,1776134718,vhdl,,,,servo_encoder_con,,,,,,,,
+C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/spi_master.vhd,1776134718,vhdl,,,,spi_master,,,,,,,,
+C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/tamakawa_interface.vhd,1776134718,vhdl,,,,tamakawa_interface,,,,,,,,

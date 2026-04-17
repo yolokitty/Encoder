@@ -1,0 +1,12 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../../source/servo_enc_lib_v1_0.vhd" \
+"../../../../../source/delta_sigma.vhd" \
+"../../../../../source/emif_con.vhd" \
+"../../../../../source/servo_encoder_con.vhd" \
+"../../../../../source/spi_master.vhd" \
+"../../../../../source/tamakawa_interface.vhd" \
+"../../../../../source/servo_enc_v1_0.vhd" \
+
+# Do not sort compile order
+nosort

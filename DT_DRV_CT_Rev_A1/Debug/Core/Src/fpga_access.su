@@ -1,0 +1,4 @@
+../Core/Src/fpga_access.c:10:6:WriteRegData32	24	static
+../Core/Src/fpga_access.c:32:10:ReadRegData32	32	static
+../Core/Src/fpga_access.c:53:10:StatusSet_ActualPosition	16	static
+../Core/Src/fpga_access.c:59:10:StatusGet_ActualPosition	16	static

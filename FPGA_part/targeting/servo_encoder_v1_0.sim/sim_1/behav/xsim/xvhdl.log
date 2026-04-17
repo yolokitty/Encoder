@@ -1,0 +1,14 @@
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/servo_enc_lib_v1_0.vhd" into library xil_defaultlib
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/delta_sigma.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'delta_sigma'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/emif_con.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'emif_con'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/servo_encoder_con.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'servo_encoder_con'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/spi_master.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'spi_master'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/tamakawa_interface.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'tamakawa_interface'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/servo_enc_v1_0.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'servo_enc_v1_0'
+WARNING: [VRFC 10-3093] actual for formal port 'i_sa' is neither a static name nor a globally static expression [C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/servo_enc_v1_0.vhd:298]
