@@ -43,3 +43,13 @@
     <Process Command="vivado.bat" Owner="RESEARCH" Host="DESKTOP-GNEDNNB" Pid="26184" HostCore="20" HostMemory="034189967360">
     </Process>
 </ProcessHandle>
+<?xml version="1.0"?>
+<ProcessHandle Version="1" Minor="0">
+    <Process Command="vivado.bat" Owner="RESEARCH" Host="DESKTOP-GNEDNNB" Pid="12092" HostCore="20" HostMemory="034189967360">
+    </Process>
+</ProcessHandle>
+<?xml version="1.0"?>
+<ProcessHandle Version="1" Minor="0">
+    <Process Command="vivado.bat" Owner="RESEARCH" Host="DESKTOP-GNEDNNB" Pid="7292" HostCore="20" HostMemory="034189967360">
+    </Process>
+</ProcessHandle>

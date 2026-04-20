@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2025.2 (win64) Build 6299465 Fri Nov 14 19:35:11 GMT 2025
-| Date             : Mon Apr 20 16:01:14 2026
+| Date             : Mon Apr 20 17:16:11 2026
 | Host             : DESKTOP-GNEDNNB running 64-bit major release  (build 9200)
 | Command          : report_power -file servo_enc_v1_0_power_routed.rpt -pb servo_enc_v1_0_power_summary_routed.pb -rpx servo_enc_v1_0_power_routed.rpx
 | Design           : servo_enc_v1_0
@@ -53,13 +53,13 @@ Table of Contents
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
 | Clocks         |     0.007 |        3 |       --- |             --- |
-| Slice Logic    |     0.010 |     7475 |       --- |             --- |
-|   LUT as Logic |     0.008 |     2855 |      8000 |           35.69 |
+| Slice Logic    |     0.011 |     7593 |       --- |             --- |
+|   LUT as Logic |     0.009 |     2992 |      8000 |           37.40 |
 |   CARRY4       |     0.001 |      353 |      2000 |           17.65 |
-|   Register     |    <0.001 |     3369 |     16000 |           21.06 |
-|   F7/F8 Muxes  |    <0.001 |       16 |      8000 |            0.20 |
+|   Register     |    <0.001 |     3368 |     16000 |           21.05 |
+|   F7/F8 Muxes  |    <0.001 |       21 |      8000 |            0.26 |
 |   Others       |     0.000 |       31 |       --- |             --- |
-| Signals        |     0.009 |     5494 |       --- |             --- |
+| Signals        |     0.009 |     5613 |       --- |             --- |
 | I/O            |     0.017 |       85 |       100 |           85.00 |
 | Static Power   |     0.020 |          |           |                 |
 | Total          |     0.062 |          |           |                 |

@@ -48,6 +48,9 @@ enum {
 
 #define CMD_INDEX_SPI_DATA	    0x0320
 
+#define ADDR_DIRECT_ENC_LSB(ch)  ((uint32_t)FPGA_BASE_ADDR + (uint32_t)(0x0520 + (0x4 * ch)))
+#define ADDR_DIRECT_ENC_MSB(ch)  ((uint32_t)FPGA_BASE_ADDR + (uint32_t)(0x0522 + (0x4 * ch)))
+
 extern void WriteRegData32(uint16_t usIndex, uint32_t ulData);
 extern uint32_t ReadRegData32(uint16_t usIndex);
 

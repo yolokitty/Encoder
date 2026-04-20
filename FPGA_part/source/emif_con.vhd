@@ -71,14 +71,12 @@ architecture behavior of emif_con is
     signal      write_data_lo               : std_logic_vector(15 downto 0);
     signal      write_state_lo              : std_logic_vector(3 downto 0);
 
-    -- ★ 기존 cs_or_wr_lo 제거, 새 신호 추가
     signal      cs_or_wr_raw                : std_logic;
     signal      cs_wr_d1                    : std_logic;
     signal      cs_wr_d2                    : std_logic;
     signal      cs_wr_rise                  : std_logic;
     signal      i_sa_latch                  : std_logic_vector(15 downto 0);
     signal      i_sd_latch                  : std_logic_vector(15 downto 0);
-    -- ★ 여기까지
 
     signal      read_cmd_exe_lo             : std_logic;
     signal      read_cmd_index_lo           : std_logic_vector(15 downto 0);
@@ -102,12 +100,12 @@ architecture behavior of emif_con is
 
     signal        universal_config_lo         : ar_16bit_8ea;
     signal        command_load_data_lo        : std_logic_vector(31 downto 0);
+    
+     signal        encoder_latch               : ar_32bit_6ea;
 
 begin
 
--- ★ 비동기 cs_or_wr_lo 제거, 동기식 교체 시작 ★
-
--- write 사이클 활성 중(CS=0, WR=0) i_sa/i_sd_in을 동기 래치
+-- 동기 래치
 addr_data_latch : process(ireset, iclk) begin
     if ireset = '0' then
         i_sa_latch  <= (others => '0');
@@ -120,7 +118,6 @@ addr_data_latch : process(ireset, iclk) begin
     end if;
 end process addr_data_latch;
 
--- cs_or_wr rising edge 동기 검출
 cs_or_wr_raw <= ics or iwr;
 
 sync_edge_proc : process(ireset, iclk) begin
@@ -135,7 +132,6 @@ end process sync_edge_proc;
 
 cs_wr_rise <= cs_wr_d1 and (not cs_wr_d2);
 
--- ★ write_exe_gen 완전 동기식으로 교체 (비동기 rising_edge 제거)
 write_exe_gen : process(ireset, iclk) begin
     if ireset = '0' then
         write_exe_lo   <= '0';
@@ -148,52 +144,50 @@ write_exe_gen : process(ireset, iclk) begin
             write_data_1st <= (others => '0');
         elsif cs_wr_rise = '1' then
             write_exe_lo   <= '1';
-            write_addr_1st <= i_sa_latch;  -- 래치된 안정적인 값 사용
+            write_addr_1st <= i_sa_latch;
             write_data_1st <= i_sd_latch;
         end if;
     end if;
 end process write_exe_gen;
--- ★ 동기식 교체 끝 ★
 
 soft_reset  <= soft_reset_lo;
 universal_config    <= universal_config_lo;
 
--- Second stage : 원본 그대로 유지
 write_state_gen : process(ireset, iclk) begin 
     if ireset = '0' then
-        write_state_lo    <=    "0000";
-        write_done_lo    <=    '0';
-        write_addr_2nd     <=    (others => '0');
-        write_data_2nd     <=    (others => '0');
+        write_state_lo  <= "0000";
+        write_done_lo   <= '0';
+        write_addr_2nd  <= (others => '0');
+        write_data_2nd  <= (others => '0');
         soft_reset_lo   <= '0';
     elsif rising_edge(iclk) then
         if write_exe_lo = '1' then
             if write_state_lo = "0000" then
                 soft_reset_lo   <= '0';
-                write_done_lo    <=    '0';
-                write_state_lo    <=    "0001";
+                write_done_lo   <= '0';
+                write_state_lo  <= "0001";
             elsif write_state_lo = "0001" then
-                write_done_lo    <=    '0';
-                write_state_lo    <=    "0010";
-                write_addr_2nd     <=    write_addr_1st;
-                write_data_2nd     <=    write_data_1st;
+                write_done_lo   <= '0';
+                write_state_lo  <= "0010";
+                write_addr_2nd  <= write_addr_1st;
+                write_data_2nd  <= write_data_1st;
                 if write_addr_1st = X"7FFE" and write_data_1st = X"1A5A" then
                     soft_reset_lo   <= '1';
                 end if;
             elsif write_state_lo = "0010" then
-                write_done_lo    <=    '1';
-                write_state_lo    <=    "0011";
+                write_done_lo   <= '1';
+                write_state_lo  <= "0011";
             elsif write_state_lo = "0011" then
-                write_done_lo    <=    '1';
-                write_state_lo    <=    "0000";
+                write_done_lo   <= '1';
+                write_state_lo  <= "0000";
                 soft_reset_lo   <= '0';
             else
-                write_done_lo    <=    '1';
-                write_state_lo    <=    "0000";
+                write_done_lo   <= '1';
+                write_state_lo  <= "0000";
             end if;
         else
-            write_state_lo    <=    "0000";
-            write_done_lo    <=    '0';
+            write_state_lo  <= "0000";
+            write_done_lo   <= '0';
             soft_reset_lo   <= '0';
         end if;
     end if;
@@ -202,36 +196,36 @@ end process write_state_gen;
 
 port_con : process(ireset, iclk) begin
     if ireset = '0' then
-        data_port_lo     <=  (others => '0');
-        write_port_lo    <=  (others => '0');
-        write_addr_lo    <=  (others => '0');
-        read_cmd_exe_lo  <=  '0';
-        read_cmd_index_lo<=  (others => '0');
-        write_reg_exe_lo <=  '0';
-        write_cmd_exe_lo <=  '0';
-        write_cmd_index_lo <= (others => '0');
+        data_port_lo        <=  (others => '0');
+        write_port_lo       <=  (others => '0');
+        write_addr_lo       <=  (others => '0');
+        read_cmd_exe_lo     <=  '0';
+        read_cmd_index_lo   <=  (others => '0');
+        write_reg_exe_lo    <=  '0';
+        write_cmd_exe_lo    <=  '0';
+        write_cmd_index_lo  <= (others => '0');
     elsif rising_edge(iclk) then
         if soft_reset_lo = '1' then
-            data_port_lo     <=  (others => '0');
-            write_port_lo    <=  (others => '0');
-            write_addr_lo    <=  (others => '0');
-            read_cmd_exe_lo  <=  '0';
-            write_reg_exe_lo <=  '0';
-            write_cmd_exe_lo <=  '0';
+            data_port_lo        <=  (others => '0');
+            write_port_lo       <=  (others => '0');
+            write_addr_lo       <=  (others => '0');
+            read_cmd_exe_lo     <=  '0';
+            write_reg_exe_lo    <=  '0';
+            write_cmd_exe_lo    <=  '0';
         else
             if write_state_lo = "0010" then
-                write_port_lo    <=    write_data_2nd;
-                write_addr_lo    <=    write_addr_2nd;
+                write_port_lo   <=  write_data_2nd;
+                write_addr_lo   <=  write_addr_2nd;
                 if write_addr_2nd = X"7FF6" then
-                    data_port_lo(15 downto 0)    <= write_data_2nd;
+                    data_port_lo(15 downto 0)   <= write_data_2nd;
                 elsif write_addr_2nd = X"7FF8" then 
-                    data_port_lo(31 downto 16)    <= write_data_2nd;
+                    data_port_lo(31 downto 16)  <= write_data_2nd;
                 elsif write_addr_2nd = X"7F0A" then 
-                    read_cmd_exe_lo  <=  '1';
-                    read_cmd_index_lo<=    write_data_2nd;
+                    read_cmd_exe_lo     <=  '1';
+                    read_cmd_index_lo   <=  write_data_2nd;
                 elsif write_addr_2nd = X"7F8C" then 
-                    write_cmd_exe_lo <=  '1';
-                    write_cmd_index_lo<=    write_data_2nd;
+                    write_cmd_exe_lo    <=  '1';
+                    write_cmd_index_lo  <=  write_data_2nd;
                 else
                     if write_addr_2nd(15 downto 12) = X"0" then 
                         write_reg_exe_lo <=  '1';
@@ -240,9 +234,9 @@ port_con : process(ireset, iclk) begin
                     end if;
                 end if;
             else
-                read_cmd_exe_lo  <=  '0';
-                write_reg_exe_lo <=  '0';
-                write_cmd_exe_lo <=  '0';
+                read_cmd_exe_lo     <=  '0';
+                write_reg_exe_lo    <=  '0';
+                write_cmd_exe_lo    <=  '0';
             end if;
         end if;
     end if;
@@ -261,12 +255,13 @@ command_write_data_proc : process (ireset, iclk) begin
 end process command_write_data_proc; 
 
 
- counter_config         <= counter_config_lo;
- delta_sigma_config     <= delta_sigma_config_lo;
- spi_config             <= spi_config_lo;
- gpio_out               <= gpio_out_lo;
- servo_io_out           <= servo_io_out_lo;
- direct_memory_write : process (ireset, iclk) begin
+counter_config      <= counter_config_lo;
+delta_sigma_config  <= delta_sigma_config_lo;
+spi_config          <= spi_config_lo;
+gpio_out            <= gpio_out_lo;
+servo_io_out        <= servo_io_out_lo;
+
+direct_memory_write : process (ireset, iclk) begin
     if ireset = '0' then
         counter_config_lo       <= (others => x"0000");
         delta_sigma_config_lo   <= (others => x"0000");
@@ -290,22 +285,22 @@ end process command_write_data_proc;
                 when X"0208" => delta_sigma_config_lo(5) <= write_port_lo;
                 when X"020A" => delta_sigma_config_lo(6) <= write_port_lo;
                 when X"0300" => spi_config_lo            <= write_port_lo;
-                when X"0400" => gpio_out_lo            <= write_port_lo;
-                when X"0402" => gpio_out_lo            <= gpio_out_lo and write_port_lo;
-                when X"0404" => gpio_out_lo            <= gpio_out_lo or  write_port_lo; 
-                when X"0406" => gpio_out_lo            <= gpio_out_lo xor write_port_lo;  
-                when X"0410" => servo_io_out_lo        <= write_port_lo;
-                when X"0412" => servo_io_out_lo        <= servo_io_out_lo and write_port_lo;
-                when X"0414" => servo_io_out_lo        <= servo_io_out_lo or  write_port_lo; 
-                when X"0416" => servo_io_out_lo        <= servo_io_out_lo xor write_port_lo;  
-                when X"0600" => universal_config_lo(1)  <= write_port_lo;
-                when X"0602" => universal_config_lo(2)  <= write_port_lo;
-                when X"0604" => universal_config_lo(3)  <= write_port_lo;
-                when X"0606" => universal_config_lo(4)  <= write_port_lo;
-                when X"0608" => universal_config_lo(5)  <= write_port_lo;
-                when X"060A" => universal_config_lo(6)  <= write_port_lo;
-                when X"060C" => universal_config_lo(7)  <= write_port_lo;
-                when X"060E" => universal_config_lo(8)  <= write_port_lo;
+                when X"0400" => gpio_out_lo              <= write_port_lo;
+                when X"0402" => gpio_out_lo              <= gpio_out_lo and write_port_lo;
+                when X"0404" => gpio_out_lo              <= gpio_out_lo or  write_port_lo; 
+                when X"0406" => gpio_out_lo              <= gpio_out_lo xor write_port_lo;  
+                when X"0410" => servo_io_out_lo          <= write_port_lo;
+                when X"0412" => servo_io_out_lo          <= servo_io_out_lo and write_port_lo;
+                when X"0414" => servo_io_out_lo          <= servo_io_out_lo or  write_port_lo; 
+                when X"0416" => servo_io_out_lo          <= servo_io_out_lo xor write_port_lo;  
+                when X"0600" => universal_config_lo(1)   <= write_port_lo;
+                when X"0602" => universal_config_lo(2)   <= write_port_lo;
+                when X"0604" => universal_config_lo(3)   <= write_port_lo;
+                when X"0606" => universal_config_lo(4)   <= write_port_lo;
+                when X"0608" => universal_config_lo(5)   <= write_port_lo;
+                when X"060A" => universal_config_lo(6)   <= write_port_lo;
+                when X"060C" => universal_config_lo(7)   <= write_port_lo;
+                when X"060E" => universal_config_lo(8)   <= write_port_lo;
                 when others => null;
             end case;
         end if;
@@ -320,7 +315,7 @@ end process command_write_data_proc;
                 when others => null;
             end case;
         else
-            counter_load_exe        <= (others => '0');
+            counter_load_exe <= (others => '0');
         end if;
     end if;
 end process direct_memory_write;
@@ -328,7 +323,7 @@ end process direct_memory_write;
 
 process(ireset, iclk) begin
     if ireset = '0' then
-        read_result_lo              <= X"00000000";
+        read_result_lo <= X"00000000";
     elsif rising_edge(iclk) then
         if read_cmd_exe_lo =  '1' then
           case read_cmd_index_lo is
@@ -345,14 +340,13 @@ process(ireset, iclk) begin
               when X"0506" => read_result_lo   <= encoder_data(4);
               when X"0508" => read_result_lo   <= encoder_data(5);
               when X"050A" => read_result_lo   <= encoder_data(6);
-              when others => read_result_lo   <= X"BAD0BAD0";
+              when others  => read_result_lo   <= X"BAD0BAD0";
           end case;
         end if;
     end if;
 end process;
 
 
--- Read 경로 완전 원본 그대로 -------------------------------------------------------
 o_bus_oe <= '1' when ird = '0' and ics = '0' else '0';
 Read_operation : process(ird, ics, i_sa, 
         gpio_out_lo,
@@ -373,7 +367,8 @@ Read_operation : process(ird, ics, i_sa,
         universal_config_lo,
         universal_status,
         servo_io_out_lo,
-        servo_io_in
+        servo_io_in,
+        encoder_data        -- ★ 직접 읽기를 위해 추가
 ) begin
     if ird = '0' and ics = '0' then
         case i_sa is
@@ -434,6 +429,21 @@ Read_operation : process(ird, ics, i_sa,
             when X"070C" => o_sd_out    <= universal_status(7);
             when X"070E" => o_sd_out    <= universal_status(8);
 
+            -- ★ 인코더 직접 읽기 주소 추가 (cmd 없이 2회 접근으로 읽기) ★
+            when X"0520" => o_sd_out    <= encoder_data(1)(15 downto 0);
+            when X"0522" => o_sd_out    <= encoder_data(1)(31 downto 16);
+            when X"0524" => o_sd_out    <= encoder_data(2)(15 downto 0);
+            when X"0526" => o_sd_out    <= encoder_data(2)(31 downto 16);
+            when X"0528" => o_sd_out    <= encoder_data(3)(15 downto 0);
+            when X"052A" => o_sd_out    <= encoder_data(3)(31 downto 16);
+            when X"052C" => o_sd_out    <= encoder_data(4)(15 downto 0);
+            when X"052E" => o_sd_out    <= encoder_data(4)(31 downto 16);
+            when X"0530" => o_sd_out    <= encoder_data(5)(15 downto 0);
+            when X"0532" => o_sd_out    <= encoder_data(5)(31 downto 16);
+            when X"0534" => o_sd_out    <= encoder_data(6)(15 downto 0);
+            when X"0536" => o_sd_out    <= encoder_data(6)(31 downto 16);
+            -- ★ 여기까지 ★
+
             when X"6EE0"   => o_sd_out    <= PRODUCT_VENDOR;
             when X"6EE2"   => o_sd_out    <= PRODUCT_ID;
             when X"6EE4"   => o_sd_out    <= PRODUCT_VER_MSB;
@@ -453,8 +463,7 @@ Read_operation : process(ird, ics, i_sa,
             when X"7F06"   => o_sd_out    <= command_load_data_lo(31 downto 16);
 
             when X"7FFE"   => o_sd_out    <= write_port_lo;
-            when others   => 
-                o_sd_out    <=    X"A5A5";
+            when others    => o_sd_out    <= X"A5A5";
         end case;
     else
         o_sd_out    <=    X"BBBB";

@@ -61,8 +61,16 @@ uint32_t StatusSet_ActualPosition(uint8_t usChNo, int32_t ActPos)
 
 uint32_t StatusGet_ActualPosition(uint8_t usChNo, int32_t *pActPos)
 {
-
-   *pActPos = ReadRegData32(CMD_INDEX_COUNTER_DATA(usChNo));
+    volatile uint16_t usLsb = *(volatile uint16_t*)ADDR_DIRECT_ENC_LSB(usChNo);
+    volatile uint16_t usMsb = *(volatile uint16_t*)ADDR_DIRECT_ENC_MSB(usChNo);
+    *pActPos = (int32_t)(((uint32_t)usMsb << 16) | (uint32_t)usLsb);
     return DRV_CT_RT_SUCCESS;
 }
+
+//uint32_t StatusGet_ActualPosition(uint8_t usChNo, int32_t *pActPos)
+//{
+//
+//   *pActPos = ReadRegData32(CMD_INDEX_COUNTER_DATA(usChNo));
+//    return DRV_CT_RT_SUCCESS;
+//}
 

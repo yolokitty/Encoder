@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="impl_1" LaunchPart="xc7s15ftgb196-1" LaunchTime="1776668374">
+<GenRun Id="impl_1" LaunchPart="xc7s15ftgb196-1" LaunchTime="1776672818">
   <File Type="PA-TCL" Name="servo_enc_v1_0.tcl"/>
   <File Type="REPORTS-TCL" Name="servo_enc_v1_0_reports.tcl"/>
   <File Type="INIT-TIMING" Name="servo_enc_v1_0_timing_summary_init.rpt"/>
