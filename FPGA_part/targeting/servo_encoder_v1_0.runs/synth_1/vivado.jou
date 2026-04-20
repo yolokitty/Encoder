@@ -3,8 +3,8 @@
 # SW Build 6299465 on Fri Nov 14 19:35:11 GMT 2025
 # IP Build 6300035 on Fri Nov 14 10:48:45 MST 2025
 # SharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025
-# Start of session at: Fri Apr 17 16:10:12 2026
-# Process ID         : 23628
+# Start of session at: Mon Apr 20 15:59:35 2026
+# Process ID         : 20936
 # Current directory  : C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/targeting/servo_encoder_v1_0.runs/synth_1
 # Command line       : vivado.exe -log servo_enc_v1_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source servo_enc_v1_0.tcl
 # Log file           : C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/targeting/servo_encoder_v1_0.runs/synth_1/servo_enc_v1_0.vds
@@ -19,6 +19,6 @@
 # Host memory        : 34189 MB
 # Swap memory        : 2281 MB
 # Total Virtual      : 36471 MB
-# Available Virtual  : 15410 MB
+# Available Virtual  : 14655 MB
 #-----------------------------------------------------------
 source servo_enc_v1_0.tcl -notrace

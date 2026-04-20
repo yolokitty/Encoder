@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2025.2 (win64) Build 6299465 Fri Nov 14 19:35:11 GMT 2025
-| Date         : Fri Apr 17 16:13:09 2026
+| Date         : Mon Apr 20 16:01:13 2026
 | Host         : DESKTOP-GNEDNNB running 64-bit major release  (build 9200)
 | Command      : report_methodology -file servo_enc_v1_0_methodology_drc_routed.rpt -pb servo_enc_v1_0_methodology_drc_routed.pb -rpx servo_enc_v1_0_methodology_drc_routed.rpx
 | Design       : servo_enc_v1_0
@@ -24,187 +24,15 @@ Table of Contents
       Design limits: <entire design considered>
              Max checks: <unlimited>
              Checks found: 98
-+-----------+------------------+---------------------------------------------+--------+
-| Rule      | Severity         | Description                                 | Checks |
-+-----------+------------------+---------------------------------------------+--------+
-| TIMING-17 | Critical Warning | Non-clocked sequential cell                 | 31     |
-| LUTAR-1   | Warning          | LUT drives async reset alert                | 1      |
-| TIMING-18 | Warning          | Missing input or output delay               | 65     |
-| ULMTCS-1  | Warning          | Control Sets use limits recommend reduction | 1      |
-+-----------+------------------+---------------------------------------------+--------+
++-----------+----------+---------------------------------------------+--------+
+| Rule      | Severity | Description                                 | Checks |
++-----------+----------+---------------------------------------------+--------+
+| TIMING-18 | Warning  | Missing input or output delay               | 97     |
+| ULMTCS-1  | Warning  | Control Sets use limits recommend reduction | 1      |
++-----------+----------+---------------------------------------------+--------+
 
 2. REPORT DETAILS
 -----------------
-TIMING-17#1 Critical Warning
-Non-clocked sequential cell  
-The clock pin U_emif_con/write_addr_1st_reg[10]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#2 Critical Warning
-Non-clocked sequential cell  
-The clock pin U_emif_con/write_addr_1st_reg[11]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#3 Critical Warning
-Non-clocked sequential cell  
-The clock pin U_emif_con/write_addr_1st_reg[12]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#4 Critical Warning
-Non-clocked sequential cell  
-The clock pin U_emif_con/write_addr_1st_reg[13]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#5 Critical Warning
-Non-clocked sequential cell  
-The clock pin U_emif_con/write_addr_1st_reg[14]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#6 Critical Warning
-Non-clocked sequential cell  
-The clock pin U_emif_con/write_addr_1st_reg[1]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#7 Critical Warning
-Non-clocked sequential cell  
-The clock pin U_emif_con/write_addr_1st_reg[2]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#8 Critical Warning
-Non-clocked sequential cell  
-The clock pin U_emif_con/write_addr_1st_reg[3]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#9 Critical Warning
-Non-clocked sequential cell  
-The clock pin U_emif_con/write_addr_1st_reg[4]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#10 Critical Warning
-Non-clocked sequential cell  
-The clock pin U_emif_con/write_addr_1st_reg[5]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#11 Critical Warning
-Non-clocked sequential cell  
-The clock pin U_emif_con/write_addr_1st_reg[6]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#12 Critical Warning
-Non-clocked sequential cell  
-The clock pin U_emif_con/write_addr_1st_reg[7]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#13 Critical Warning
-Non-clocked sequential cell  
-The clock pin U_emif_con/write_addr_1st_reg[8]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#14 Critical Warning
-Non-clocked sequential cell  
-The clock pin U_emif_con/write_addr_1st_reg[9]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#15 Critical Warning
-Non-clocked sequential cell  
-The clock pin U_emif_con/write_data_1st_reg[0]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#16 Critical Warning
-Non-clocked sequential cell  
-The clock pin U_emif_con/write_data_1st_reg[10]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#17 Critical Warning
-Non-clocked sequential cell  
-The clock pin U_emif_con/write_data_1st_reg[11]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#18 Critical Warning
-Non-clocked sequential cell  
-The clock pin U_emif_con/write_data_1st_reg[12]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#19 Critical Warning
-Non-clocked sequential cell  
-The clock pin U_emif_con/write_data_1st_reg[13]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#20 Critical Warning
-Non-clocked sequential cell  
-The clock pin U_emif_con/write_data_1st_reg[14]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#21 Critical Warning
-Non-clocked sequential cell  
-The clock pin U_emif_con/write_data_1st_reg[15]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#22 Critical Warning
-Non-clocked sequential cell  
-The clock pin U_emif_con/write_data_1st_reg[1]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#23 Critical Warning
-Non-clocked sequential cell  
-The clock pin U_emif_con/write_data_1st_reg[2]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#24 Critical Warning
-Non-clocked sequential cell  
-The clock pin U_emif_con/write_data_1st_reg[3]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#25 Critical Warning
-Non-clocked sequential cell  
-The clock pin U_emif_con/write_data_1st_reg[4]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#26 Critical Warning
-Non-clocked sequential cell  
-The clock pin U_emif_con/write_data_1st_reg[5]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#27 Critical Warning
-Non-clocked sequential cell  
-The clock pin U_emif_con/write_data_1st_reg[6]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#28 Critical Warning
-Non-clocked sequential cell  
-The clock pin U_emif_con/write_data_1st_reg[7]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#29 Critical Warning
-Non-clocked sequential cell  
-The clock pin U_emif_con/write_data_1st_reg[8]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#30 Critical Warning
-Non-clocked sequential cell  
-The clock pin U_emif_con/write_data_1st_reg[9]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#31 Critical Warning
-Non-clocked sequential cell  
-The clock pin U_emif_con/write_exe_lo_reg/C is not reached by a timing clock
-Related violations: <none>
-
-LUTAR-1#1 Warning
-LUT drives async reset alert  
-LUT cell U_emif_con/write_exe_lo_i_2, with 2 or more inputs, drives asynchronous preset/clear pin(s) U_emif_con/write_data_1st_reg[11]/CLR,
-U_emif_con/write_data_1st_reg[12]/CLR,
-U_emif_con/write_data_1st_reg[13]/CLR,
-U_emif_con/write_data_1st_reg[14]/CLR,
-U_emif_con/write_data_1st_reg[15]/CLR,
-U_emif_con/write_data_1st_reg[1]/CLR, U_emif_con/write_data_1st_reg[2]/CLR,
-U_emif_con/write_data_1st_reg[3]/CLR, U_emif_con/write_data_1st_reg[4]/CLR,
-U_emif_con/write_data_1st_reg[5]/CLR, U_emif_con/write_data_1st_reg[6]/CLR,
-U_emif_con/write_data_1st_reg[7]/CLR, U_emif_con/write_data_1st_reg[8]/CLR,
-U_emif_con/write_data_1st_reg[9]/CLR, U_emif_con/write_exe_lo_reg/CLR
- (the first 15 of 31 listed). The LUT may glitch and trigger an unexpected reset, even if it is a properly timed path.
-Related violations: <none>
-
 TIMING-18#1 Warning
 Missing input or output delay  
 An input delay is missing on enc_a_cnt1 relative to the rising and/or falling clock edge(s) of fpge_clk.
@@ -247,292 +75,452 @@ Related violations: <none>
 
 TIMING-18#9 Warning
 Missing input or output delay  
-An input delay is missing on hall_w_cnt1 relative to the rising and/or falling clock edge(s) of fpge_clk.
+An input delay is missing on fmc_ab[0] relative to the rising and/or falling clock edge(s) of fpge_clk.
 Related violations: <none>
 
 TIMING-18#10 Warning
 Missing input or output delay  
-An input delay is missing on hall_w_cnt2 relative to the rising and/or falling clock edge(s) of fpge_clk.
+An input delay is missing on fmc_ab[10] relative to the rising and/or falling clock edge(s) of fpge_clk.
 Related violations: <none>
 
 TIMING-18#11 Warning
 Missing input or output delay  
-An input delay is missing on ipm_fault relative to the rising and/or falling clock edge(s) of fpge_clk.
+An input delay is missing on fmc_ab[11] relative to the rising and/or falling clock edge(s) of fpge_clk.
 Related violations: <none>
 
 TIMING-18#12 Warning
 Missing input or output delay  
-An input delay is missing on iresetn relative to the rising and/or falling clock edge(s) of fpge_clk.
+An input delay is missing on fmc_ab[12] relative to the rising and/or falling clock edge(s) of fpge_clk.
 Related violations: <none>
 
 TIMING-18#13 Warning
 Missing input or output delay  
-An input delay is missing on ntc_sdi relative to the rising and/or falling clock edge(s) of fpge_clk.
+An input delay is missing on fmc_ab[13] relative to the rising and/or falling clock edge(s) of fpge_clk.
 Related violations: <none>
 
 TIMING-18#14 Warning
 Missing input or output delay  
-An input delay is missing on power_fault relative to the rising and/or falling clock edge(s) of fpge_clk.
+An input delay is missing on fmc_ab[1] relative to the rising and/or falling clock edge(s) of fpge_clk.
 Related violations: <none>
 
 TIMING-18#15 Warning
 Missing input or output delay  
-An input delay is missing on sto1 relative to the rising and/or falling clock edge(s) of fpge_clk.
+An input delay is missing on fmc_ab[2] relative to the rising and/or falling clock edge(s) of fpge_clk.
 Related violations: <none>
 
 TIMING-18#16 Warning
 Missing input or output delay  
-An input delay is missing on sto2 relative to the rising and/or falling clock edge(s) of fpge_clk.
+An input delay is missing on fmc_ab[3] relative to the rising and/or falling clock edge(s) of fpge_clk.
 Related violations: <none>
 
 TIMING-18#17 Warning
 Missing input or output delay  
-An input delay is missing on uart_rx_cnt1_1 relative to the rising and/or falling clock edge(s) of fpge_clk.
+An input delay is missing on fmc_ab[4] relative to the rising and/or falling clock edge(s) of fpge_clk.
 Related violations: <none>
 
 TIMING-18#18 Warning
 Missing input or output delay  
-An input delay is missing on uart_rx_cnt1_2 relative to the rising and/or falling clock edge(s) of fpge_clk.
+An input delay is missing on fmc_ab[5] relative to the rising and/or falling clock edge(s) of fpge_clk.
 Related violations: <none>
 
 TIMING-18#19 Warning
 Missing input or output delay  
-An input delay is missing on uart_rx_cnt2_1 relative to the rising and/or falling clock edge(s) of fpge_clk.
+An input delay is missing on fmc_ab[6] relative to the rising and/or falling clock edge(s) of fpge_clk.
 Related violations: <none>
 
 TIMING-18#20 Warning
 Missing input or output delay  
-An input delay is missing on uart_rx_cnt2_2 relative to the rising and/or falling clock edge(s) of fpge_clk.
+An input delay is missing on fmc_ab[7] relative to the rising and/or falling clock edge(s) of fpge_clk.
 Related violations: <none>
 
 TIMING-18#21 Warning
 Missing input or output delay  
-An output delay is missing on dbr_rly relative to the rising and/or falling clock edge(s) of fpge_clk.
+An input delay is missing on fmc_ab[8] relative to the rising and/or falling clock edge(s) of fpge_clk.
 Related violations: <none>
 
 TIMING-18#22 Warning
 Missing input or output delay  
-An output delay is missing on ds_clk_out[1] relative to the rising and/or falling clock edge(s) of fpge_clk.
+An input delay is missing on fmc_ab[9] relative to the rising and/or falling clock edge(s) of fpge_clk.
 Related violations: <none>
 
 TIMING-18#23 Warning
 Missing input or output delay  
-An output delay is missing on ds_clk_out[2] relative to the rising and/or falling clock edge(s) of fpge_clk.
+An input delay is missing on fmc_csn relative to the rising and/or falling clock edge(s) of fpge_clk.
 Related violations: <none>
 
 TIMING-18#24 Warning
 Missing input or output delay  
-An output delay is missing on ds_clk_out[3] relative to the rising and/or falling clock edge(s) of fpge_clk.
+An input delay is missing on fmc_db[0] relative to the rising and/or falling clock edge(s) of fpge_clk.
 Related violations: <none>
 
 TIMING-18#25 Warning
 Missing input or output delay  
-An output delay is missing on ds_clk_out[4] relative to the rising and/or falling clock edge(s) of fpge_clk.
+An input delay is missing on fmc_db[10] relative to the rising and/or falling clock edge(s) of fpge_clk.
 Related violations: <none>
 
 TIMING-18#26 Warning
 Missing input or output delay  
-An output delay is missing on ds_clk_out[5] relative to the rising and/or falling clock edge(s) of fpge_clk.
+An input delay is missing on fmc_db[11] relative to the rising and/or falling clock edge(s) of fpge_clk.
 Related violations: <none>
 
 TIMING-18#27 Warning
 Missing input or output delay  
-An output delay is missing on ds_clk_out[6] relative to the rising and/or falling clock edge(s) of fpge_clk.
+An input delay is missing on fmc_db[12] relative to the rising and/or falling clock edge(s) of fpge_clk.
 Related violations: <none>
 
 TIMING-18#28 Warning
 Missing input or output delay  
-An output delay is missing on fan_enable relative to the rising and/or falling clock edge(s) of fpge_clk.
+An input delay is missing on fmc_db[13] relative to the rising and/or falling clock edge(s) of fpge_clk.
 Related violations: <none>
 
 TIMING-18#29 Warning
 Missing input or output delay  
-An output delay is missing on fmc_db[0] relative to the rising and/or falling clock edge(s) of fpge_clk.
+An input delay is missing on fmc_db[14] relative to the rising and/or falling clock edge(s) of fpge_clk.
 Related violations: <none>
 
 TIMING-18#30 Warning
 Missing input or output delay  
-An output delay is missing on fmc_db[10] relative to the rising and/or falling clock edge(s) of fpge_clk.
+An input delay is missing on fmc_db[15] relative to the rising and/or falling clock edge(s) of fpge_clk.
 Related violations: <none>
 
 TIMING-18#31 Warning
 Missing input or output delay  
-An output delay is missing on fmc_db[11] relative to the rising and/or falling clock edge(s) of fpge_clk.
+An input delay is missing on fmc_db[1] relative to the rising and/or falling clock edge(s) of fpge_clk.
 Related violations: <none>
 
 TIMING-18#32 Warning
 Missing input or output delay  
-An output delay is missing on fmc_db[12] relative to the rising and/or falling clock edge(s) of fpge_clk.
+An input delay is missing on fmc_db[2] relative to the rising and/or falling clock edge(s) of fpge_clk.
 Related violations: <none>
 
 TIMING-18#33 Warning
 Missing input or output delay  
-An output delay is missing on fmc_db[13] relative to the rising and/or falling clock edge(s) of fpge_clk.
+An input delay is missing on fmc_db[3] relative to the rising and/or falling clock edge(s) of fpge_clk.
 Related violations: <none>
 
 TIMING-18#34 Warning
 Missing input or output delay  
-An output delay is missing on fmc_db[14] relative to the rising and/or falling clock edge(s) of fpge_clk.
+An input delay is missing on fmc_db[4] relative to the rising and/or falling clock edge(s) of fpge_clk.
 Related violations: <none>
 
 TIMING-18#35 Warning
 Missing input or output delay  
-An output delay is missing on fmc_db[15] relative to the rising and/or falling clock edge(s) of fpge_clk.
+An input delay is missing on fmc_db[5] relative to the rising and/or falling clock edge(s) of fpge_clk.
 Related violations: <none>
 
 TIMING-18#36 Warning
 Missing input or output delay  
-An output delay is missing on fmc_db[1] relative to the rising and/or falling clock edge(s) of fpge_clk.
+An input delay is missing on fmc_db[6] relative to the rising and/or falling clock edge(s) of fpge_clk.
 Related violations: <none>
 
 TIMING-18#37 Warning
 Missing input or output delay  
-An output delay is missing on fmc_db[2] relative to the rising and/or falling clock edge(s) of fpge_clk.
+An input delay is missing on fmc_db[7] relative to the rising and/or falling clock edge(s) of fpge_clk.
 Related violations: <none>
 
 TIMING-18#38 Warning
 Missing input or output delay  
-An output delay is missing on fmc_db[3] relative to the rising and/or falling clock edge(s) of fpge_clk.
+An input delay is missing on fmc_db[8] relative to the rising and/or falling clock edge(s) of fpge_clk.
 Related violations: <none>
 
 TIMING-18#39 Warning
 Missing input or output delay  
-An output delay is missing on fmc_db[4] relative to the rising and/or falling clock edge(s) of fpge_clk.
+An input delay is missing on fmc_db[9] relative to the rising and/or falling clock edge(s) of fpge_clk.
 Related violations: <none>
 
 TIMING-18#40 Warning
 Missing input or output delay  
-An output delay is missing on fmc_db[5] relative to the rising and/or falling clock edge(s) of fpge_clk.
+An input delay is missing on fmc_wrn relative to the rising and/or falling clock edge(s) of fpge_clk.
 Related violations: <none>
 
 TIMING-18#41 Warning
 Missing input or output delay  
-An output delay is missing on fmc_db[6] relative to the rising and/or falling clock edge(s) of fpge_clk.
+An input delay is missing on hall_w_cnt1 relative to the rising and/or falling clock edge(s) of fpge_clk.
 Related violations: <none>
 
 TIMING-18#42 Warning
 Missing input or output delay  
-An output delay is missing on fmc_db[7] relative to the rising and/or falling clock edge(s) of fpge_clk.
+An input delay is missing on hall_w_cnt2 relative to the rising and/or falling clock edge(s) of fpge_clk.
 Related violations: <none>
 
 TIMING-18#43 Warning
 Missing input or output delay  
-An output delay is missing on fmc_db[8] relative to the rising and/or falling clock edge(s) of fpge_clk.
+An input delay is missing on ipm_fault relative to the rising and/or falling clock edge(s) of fpge_clk.
 Related violations: <none>
 
 TIMING-18#44 Warning
 Missing input or output delay  
-An output delay is missing on fmc_db[9] relative to the rising and/or falling clock edge(s) of fpge_clk.
+An input delay is missing on iresetn relative to the rising and/or falling clock edge(s) of fpge_clk.
 Related violations: <none>
 
 TIMING-18#45 Warning
 Missing input or output delay  
-An output delay is missing on gp_out[0] relative to the rising and/or falling clock edge(s) of fpge_clk.
+An input delay is missing on ntc_sdi relative to the rising and/or falling clock edge(s) of fpge_clk.
 Related violations: <none>
 
 TIMING-18#46 Warning
 Missing input or output delay  
-An output delay is missing on gp_out[1] relative to the rising and/or falling clock edge(s) of fpge_clk.
+An input delay is missing on power_fault relative to the rising and/or falling clock edge(s) of fpge_clk.
 Related violations: <none>
 
 TIMING-18#47 Warning
 Missing input or output delay  
-An output delay is missing on gp_out[2] relative to the rising and/or falling clock edge(s) of fpge_clk.
+An input delay is missing on sto1 relative to the rising and/or falling clock edge(s) of fpge_clk.
 Related violations: <none>
 
 TIMING-18#48 Warning
 Missing input or output delay  
-An output delay is missing on gp_out[3] relative to the rising and/or falling clock edge(s) of fpge_clk.
+An input delay is missing on sto2 relative to the rising and/or falling clock edge(s) of fpge_clk.
 Related violations: <none>
 
 TIMING-18#49 Warning
 Missing input or output delay  
-An output delay is missing on ntc_csn relative to the rising and/or falling clock edge(s) of fpge_clk.
+An input delay is missing on uart_rx_cnt1_1 relative to the rising and/or falling clock edge(s) of fpge_clk.
 Related violations: <none>
 
 TIMING-18#50 Warning
 Missing input or output delay  
-An output delay is missing on ntc_sclk relative to the rising and/or falling clock edge(s) of fpge_clk.
+An input delay is missing on uart_rx_cnt1_2 relative to the rising and/or falling clock edge(s) of fpge_clk.
 Related violations: <none>
 
 TIMING-18#51 Warning
 Missing input or output delay  
-An output delay is missing on pwm_buffer_con relative to the rising and/or falling clock edge(s) of fpge_clk.
+An input delay is missing on uart_rx_cnt2_1 relative to the rising and/or falling clock edge(s) of fpge_clk.
 Related violations: <none>
 
 TIMING-18#52 Warning
 Missing input or output delay  
-An output delay is missing on rdy_rly relative to the rising and/or falling clock edge(s) of fpge_clk.
+An input delay is missing on uart_rx_cnt2_2 relative to the rising and/or falling clock edge(s) of fpge_clk.
 Related violations: <none>
 
 TIMING-18#53 Warning
 Missing input or output delay  
-An output delay is missing on regen_brake relative to the rising and/or falling clock edge(s) of fpge_clk.
+An output delay is missing on dbr_rly relative to the rising and/or falling clock edge(s) of fpge_clk.
 Related violations: <none>
 
 TIMING-18#54 Warning
 Missing input or output delay  
-An output delay is missing on status_led[0] relative to the rising and/or falling clock edge(s) of fpge_clk.
+An output delay is missing on ds_clk_out[1] relative to the rising and/or falling clock edge(s) of fpge_clk.
 Related violations: <none>
 
 TIMING-18#55 Warning
 Missing input or output delay  
-An output delay is missing on status_led[1] relative to the rising and/or falling clock edge(s) of fpge_clk.
+An output delay is missing on ds_clk_out[2] relative to the rising and/or falling clock edge(s) of fpge_clk.
 Related violations: <none>
 
 TIMING-18#56 Warning
 Missing input or output delay  
-An output delay is missing on status_led[2] relative to the rising and/or falling clock edge(s) of fpge_clk.
+An output delay is missing on ds_clk_out[3] relative to the rising and/or falling clock edge(s) of fpge_clk.
 Related violations: <none>
 
 TIMING-18#57 Warning
 Missing input or output delay  
-An output delay is missing on status_led[3] relative to the rising and/or falling clock edge(s) of fpge_clk.
+An output delay is missing on ds_clk_out[4] relative to the rising and/or falling clock edge(s) of fpge_clk.
 Related violations: <none>
 
 TIMING-18#58 Warning
 Missing input or output delay  
-An output delay is missing on uart_dir_cnt1_1 relative to the rising and/or falling clock edge(s) of fpge_clk.
+An output delay is missing on ds_clk_out[5] relative to the rising and/or falling clock edge(s) of fpge_clk.
 Related violations: <none>
 
 TIMING-18#59 Warning
 Missing input or output delay  
-An output delay is missing on uart_dir_cnt1_2 relative to the rising and/or falling clock edge(s) of fpge_clk.
+An output delay is missing on ds_clk_out[6] relative to the rising and/or falling clock edge(s) of fpge_clk.
 Related violations: <none>
 
 TIMING-18#60 Warning
 Missing input or output delay  
-An output delay is missing on uart_dir_cnt2_1 relative to the rising and/or falling clock edge(s) of fpge_clk.
+An output delay is missing on fan_enable relative to the rising and/or falling clock edge(s) of fpge_clk.
 Related violations: <none>
 
 TIMING-18#61 Warning
 Missing input or output delay  
-An output delay is missing on uart_dir_cnt2_2 relative to the rising and/or falling clock edge(s) of fpge_clk.
+An output delay is missing on fmc_db[0] relative to the rising and/or falling clock edge(s) of fpge_clk.
 Related violations: <none>
 
 TIMING-18#62 Warning
 Missing input or output delay  
-An output delay is missing on uart_tx_cnt1_1 relative to the rising and/or falling clock edge(s) of fpge_clk.
+An output delay is missing on fmc_db[10] relative to the rising and/or falling clock edge(s) of fpge_clk.
 Related violations: <none>
 
 TIMING-18#63 Warning
 Missing input or output delay  
-An output delay is missing on uart_tx_cnt1_2 relative to the rising and/or falling clock edge(s) of fpge_clk.
+An output delay is missing on fmc_db[11] relative to the rising and/or falling clock edge(s) of fpge_clk.
 Related violations: <none>
 
 TIMING-18#64 Warning
 Missing input or output delay  
-An output delay is missing on uart_tx_cnt2_1 relative to the rising and/or falling clock edge(s) of fpge_clk.
+An output delay is missing on fmc_db[12] relative to the rising and/or falling clock edge(s) of fpge_clk.
 Related violations: <none>
 
 TIMING-18#65 Warning
+Missing input or output delay  
+An output delay is missing on fmc_db[13] relative to the rising and/or falling clock edge(s) of fpge_clk.
+Related violations: <none>
+
+TIMING-18#66 Warning
+Missing input or output delay  
+An output delay is missing on fmc_db[14] relative to the rising and/or falling clock edge(s) of fpge_clk.
+Related violations: <none>
+
+TIMING-18#67 Warning
+Missing input or output delay  
+An output delay is missing on fmc_db[15] relative to the rising and/or falling clock edge(s) of fpge_clk.
+Related violations: <none>
+
+TIMING-18#68 Warning
+Missing input or output delay  
+An output delay is missing on fmc_db[1] relative to the rising and/or falling clock edge(s) of fpge_clk.
+Related violations: <none>
+
+TIMING-18#69 Warning
+Missing input or output delay  
+An output delay is missing on fmc_db[2] relative to the rising and/or falling clock edge(s) of fpge_clk.
+Related violations: <none>
+
+TIMING-18#70 Warning
+Missing input or output delay  
+An output delay is missing on fmc_db[3] relative to the rising and/or falling clock edge(s) of fpge_clk.
+Related violations: <none>
+
+TIMING-18#71 Warning
+Missing input or output delay  
+An output delay is missing on fmc_db[4] relative to the rising and/or falling clock edge(s) of fpge_clk.
+Related violations: <none>
+
+TIMING-18#72 Warning
+Missing input or output delay  
+An output delay is missing on fmc_db[5] relative to the rising and/or falling clock edge(s) of fpge_clk.
+Related violations: <none>
+
+TIMING-18#73 Warning
+Missing input or output delay  
+An output delay is missing on fmc_db[6] relative to the rising and/or falling clock edge(s) of fpge_clk.
+Related violations: <none>
+
+TIMING-18#74 Warning
+Missing input or output delay  
+An output delay is missing on fmc_db[7] relative to the rising and/or falling clock edge(s) of fpge_clk.
+Related violations: <none>
+
+TIMING-18#75 Warning
+Missing input or output delay  
+An output delay is missing on fmc_db[8] relative to the rising and/or falling clock edge(s) of fpge_clk.
+Related violations: <none>
+
+TIMING-18#76 Warning
+Missing input or output delay  
+An output delay is missing on fmc_db[9] relative to the rising and/or falling clock edge(s) of fpge_clk.
+Related violations: <none>
+
+TIMING-18#77 Warning
+Missing input or output delay  
+An output delay is missing on gp_out[0] relative to the rising and/or falling clock edge(s) of fpge_clk.
+Related violations: <none>
+
+TIMING-18#78 Warning
+Missing input or output delay  
+An output delay is missing on gp_out[1] relative to the rising and/or falling clock edge(s) of fpge_clk.
+Related violations: <none>
+
+TIMING-18#79 Warning
+Missing input or output delay  
+An output delay is missing on gp_out[2] relative to the rising and/or falling clock edge(s) of fpge_clk.
+Related violations: <none>
+
+TIMING-18#80 Warning
+Missing input or output delay  
+An output delay is missing on gp_out[3] relative to the rising and/or falling clock edge(s) of fpge_clk.
+Related violations: <none>
+
+TIMING-18#81 Warning
+Missing input or output delay  
+An output delay is missing on ntc_csn relative to the rising and/or falling clock edge(s) of fpge_clk.
+Related violations: <none>
+
+TIMING-18#82 Warning
+Missing input or output delay  
+An output delay is missing on ntc_sclk relative to the rising and/or falling clock edge(s) of fpge_clk.
+Related violations: <none>
+
+TIMING-18#83 Warning
+Missing input or output delay  
+An output delay is missing on pwm_buffer_con relative to the rising and/or falling clock edge(s) of fpge_clk.
+Related violations: <none>
+
+TIMING-18#84 Warning
+Missing input or output delay  
+An output delay is missing on rdy_rly relative to the rising and/or falling clock edge(s) of fpge_clk.
+Related violations: <none>
+
+TIMING-18#85 Warning
+Missing input or output delay  
+An output delay is missing on regen_brake relative to the rising and/or falling clock edge(s) of fpge_clk.
+Related violations: <none>
+
+TIMING-18#86 Warning
+Missing input or output delay  
+An output delay is missing on status_led[0] relative to the rising and/or falling clock edge(s) of fpge_clk.
+Related violations: <none>
+
+TIMING-18#87 Warning
+Missing input or output delay  
+An output delay is missing on status_led[1] relative to the rising and/or falling clock edge(s) of fpge_clk.
+Related violations: <none>
+
+TIMING-18#88 Warning
+Missing input or output delay  
+An output delay is missing on status_led[2] relative to the rising and/or falling clock edge(s) of fpge_clk.
+Related violations: <none>
+
+TIMING-18#89 Warning
+Missing input or output delay  
+An output delay is missing on status_led[3] relative to the rising and/or falling clock edge(s) of fpge_clk.
+Related violations: <none>
+
+TIMING-18#90 Warning
+Missing input or output delay  
+An output delay is missing on uart_dir_cnt1_1 relative to the rising and/or falling clock edge(s) of fpge_clk.
+Related violations: <none>
+
+TIMING-18#91 Warning
+Missing input or output delay  
+An output delay is missing on uart_dir_cnt1_2 relative to the rising and/or falling clock edge(s) of fpge_clk.
+Related violations: <none>
+
+TIMING-18#92 Warning
+Missing input or output delay  
+An output delay is missing on uart_dir_cnt2_1 relative to the rising and/or falling clock edge(s) of fpge_clk.
+Related violations: <none>
+
+TIMING-18#93 Warning
+Missing input or output delay  
+An output delay is missing on uart_dir_cnt2_2 relative to the rising and/or falling clock edge(s) of fpge_clk.
+Related violations: <none>
+
+TIMING-18#94 Warning
+Missing input or output delay  
+An output delay is missing on uart_tx_cnt1_1 relative to the rising and/or falling clock edge(s) of fpge_clk.
+Related violations: <none>
+
+TIMING-18#95 Warning
+Missing input or output delay  
+An output delay is missing on uart_tx_cnt1_2 relative to the rising and/or falling clock edge(s) of fpge_clk.
+Related violations: <none>
+
+TIMING-18#96 Warning
+Missing input or output delay  
+An output delay is missing on uart_tx_cnt2_1 relative to the rising and/or falling clock edge(s) of fpge_clk.
+Related violations: <none>
+
+TIMING-18#97 Warning
 Missing input or output delay  
 An output delay is missing on uart_tx_cnt2_2 relative to the rising and/or falling clock edge(s) of fpge_clk.
 Related violations: <none>
 
 ULMTCS-1#1 Warning
 Control Sets use limits recommend reduction  
-This design uses 154 control sets (vs. available limit of 2000, determined by 1 control set per CLB). This exceeds the control set use guideline of 7.5 percent. This is at a level where reduction is RECOMMENDED (see UG949). Use report_control_sets to get more details.
+This design uses 155 control sets (vs. available limit of 2000, determined by 1 control set per CLB). This exceeds the control set use guideline of 7.5 percent. This is at a level where reduction is RECOMMENDED (see UG949). Use report_control_sets to get more details.
 Related violations: <none>
 
 

@@ -1,21 +1,4 @@
-/* USER CODE BEGIN Header */
-/**
-  ******************************************************************************
-  * @file           : main.c
-  * @brief          : Main program body
-  ******************************************************************************
-  * @attention
-  *
-  * Copyright (c) 2024 STMicroelectronics.
-  * All rights reserved.
-  *
-  * This software is licensed under terms that can be found in the LICENSE file
-  * in the root directory of this software component.
-  * If no LICENSE file comes with this software, it is provided AS-IS.
-  *
-  ******************************************************************************
-  */
-/* USER CODE END Header */
+
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 
@@ -53,11 +36,17 @@ volatile uint16_t g_val1 = 0;
 volatile uint16_t g_val2 = 0;
 volatile uint16_t g_val3 = 0;
 volatile uint16_t g_val4 = 0;
+
+volatile uint32_t g_hfsr  = 0;
+volatile uint32_t g_cfsr  = 0;
+volatile uint32_t g_mmfar = 0;
+volatile uint32_t g_bfar  = 0;
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
-static void MPU_Initialize(void);
+//static void MPU_Initialize(void);
 static void MPU_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_FMC_Init(void);
@@ -79,7 +68,9 @@ int main(void)
   /* USER CODE BEGIN 1 */
 //	int32_t ulTempData = 0;
 //	int32_t ulWriteData = 0, ulWritePrev = 0;
+
 	int32_t nPreTick = 0;
+
 
   /* USER CODE END 1 */
 
@@ -128,7 +119,7 @@ int main(void)
 	  // Live LED
 	  if((HAL_GetTick() - nPreTick) > 500)
 	  {
-		  *(volatile uint16_t*)ADDR_COUNTER_CONFIG(0) = 0x0030;
+//		  *(volatile uint16_t*)ADDR_COUNTER_CONFIG(0) = 0x0030;
 
 		  HAL_GPIO_TogglePin(LED_RUN_GPIO_Port, LED_RUN_Pin);
 //		  g_val1 = *(__IO uint16_t *)(0x68000408);
@@ -257,10 +248,10 @@ static void MX_FMC_Init(void)
   hsram1.Init.WriteFifo = FMC_WRITE_FIFO_DISABLE;
   hsram1.Init.PageSize = FMC_PAGE_SIZE_NONE;
   /* Timing */
-  Timing.AddressSetupTime = 15;
-  Timing.AddressHoldTime = 15;
-  Timing.DataSetupTime = 255;
-  Timing.BusTurnAroundDuration = 15;
+  Timing.AddressSetupTime = 5;			// 15->5
+  Timing.AddressHoldTime = 2;			// 15->2
+  Timing.DataSetupTime = 245;			// 255->20
+  Timing.BusTurnAroundDuration = 5;	// 15->5
   Timing.CLKDivision = 16;
   Timing.DataLatency = 17;
   Timing.AccessMode = FMC_ACCESS_MODE_A;
@@ -292,10 +283,10 @@ static void MX_FMC_Init(void)
   hsram3.Init.WriteFifo = FMC_WRITE_FIFO_DISABLE;
   hsram3.Init.PageSize = FMC_PAGE_SIZE_NONE;
   /* Timing */
-  Timing.AddressSetupTime = 15;
-  Timing.AddressHoldTime = 15;
-  Timing.DataSetupTime = 255;
-  Timing.BusTurnAroundDuration = 15;
+  Timing.AddressSetupTime = 5;			// 15->5
+  Timing.AddressHoldTime = 2;			// 15->2
+  Timing.DataSetupTime = 245;			// 255->20
+  Timing.BusTurnAroundDuration = 5;	// 15->5
   Timing.CLKDivision = 16;
   Timing.DataLatency = 17;
   Timing.AccessMode = FMC_ACCESS_MODE_A;

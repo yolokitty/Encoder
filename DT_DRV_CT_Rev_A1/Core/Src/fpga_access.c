@@ -27,6 +27,9 @@ void WriteRegData32(uint16_t usIndex, uint32_t ulData)
     usTemp = *(volatile uint16_t*)((uint32_t)ADDR_WR_CMD_PORT);
     if(usTemp != (uint16_t)usIndex)
         usTemp = *(volatile uint16_t*)(ADDR_WR_CMD_PORT);
+
+    __DSB();
+    __NOP(); __NOP(); __NOP(); __NOP();
 }
 
 uint32_t ReadRegData32(uint16_t usIndex)

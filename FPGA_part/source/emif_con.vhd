@@ -5,112 +5,6 @@
 -- Desc.      :    bus controller(reg files, address decoder and etc)
 -- Last Fix:  :    2024. 03. 14.
 -- Tartget    :    XC7S25-1FTGB196
--- Contens    :    
--- History :
--- 1) 2024. 03. 14  -. First coding.
--- 2) 2024. xx. xx  -. 
--- 3) 
--- 4) 
--- 5) 
--------------------------------------------------------------------------------------------------
--- Address Map(aspect to MCU address bus[15:0]))
---  0x6EE0  : PRODUCT_VENDOR(0x5053) 	
---  0x6EE2  : PRODUCT_ID(0xAA01) 	    
---  0x6EE4  : PRODUCT_VER_MSB(0x2024) 
---  0x6EE8  : PRODUCT_VER_LSB(0x0314) 
---  0x7FF2  : read result data register LSB(16 bit)
---  0x7FF4  : read result data register MSB(16 bit)
---  0x7FF6  : write data register LSB(16 bit)
---  0x7FF8  : write data register MSB(16 bit)
---  0x7F0A  : Read  cmd port.
---  0x7F8C  : Write cmd port.
--- Command list
---     X"0500" => counter_load_exe
---     X"0502" => counter_load_exe
---     X"0504" => counter_load_exe
---     X"0506" => counter_load_exe
---     X"0508" => counter_load_exe
---     X"050A" => counter_load_exe
---  0xFFFF  : with :1A5A" ==> soft reset
-
--- Register direct access region.(address (15 downto 12) == 0x0)
---  0x0100 : counter_config_lo(1)
---  0x0102 : counter_config_lo(2)
---  0x0104 : counter_config_lo(3)
---  0x0106 : counter_config_lo(4)
---  0x0108 : counter_config_lo(5)
---  0x010A : counter_config_lo(6)
---  0x010C : reserved.
---  0x010E : reserved.
---  0x0110 : counter_status(1)
---  0x0112 : counter_status(2)
---  0x0114 : counter_status(3)
---  0x0116 : counter_status(4)
---  0x0118 : counter_status(5)
---  0x011A : counter_status(6)
---  0x011C : reserved.
---  0x011E : reserved.
---  0x0200 : delta_sigma_config_lo(1)
---  0x0202 : delta_sigma_config_lo(2)
---  0x0204 : delta_sigma_config_lo(3)
---  0x0206 : delta_sigma_config_lo(4)
---  0x0208 : delta_sigma_config_lo(5)
---  0x020A : delta_sigma_config_lo(6)
---  0x020C : reserved.
---  0x020E : reserved.
---  0x0210 : delta_sigma_status_lo(1)
---  0x0212 : delta_sigma_status_lo(2)
---  0x0214 : delta_sigma_status_lo(3)
---  0x0216 : delta_sigma_status_lo(4)
---  0x0218 : delta_sigma_status_lo(5)
---  0x021A : delta_sigma_status_lo(6)
---  0x021C : reserved.
---  0x021E : reserved.
---  0x0300 : spi_config_lo
---  0x0302 : reserved.
---  0x0304 : reserved.
---  0x0306 : reserved.
---  0x0308 : reserved.
---  0x030A : reserved.
---  0x030C : reserved.
---  0x030E : reserved.
---  0x0310 : spi_status_lo
---  0x0312 : reserved.
---  0x0314 : reserved.
---  0x0316 : reserved.
---  0x0318 : reserved.
---  0x031A : reserved.
---  0x031C : reserved.
---  0x031E : reserved.
---  0x0400 : gpio_out_lo
---  0x0402 : gpio_out_lo(same with 0x400)
---  0x0404 : gpio_out_lo(same with 0x400)
---  0x0406 : gpio_out_lo(same with 0x400)
---  0x0408 : gpio_in,
---  0x0408 : reserved.
---  0x040A : reserved.
---  0x040C : reserved.
---  0x040E : reserved.
---  0x0410 : mechanical_status(1)
---  0x0412 : mechanical_status(2)
---  0x0414 : mechanical_status(3)
---  0x0418 : mechanical_status(4)
---  0x0600 : universal_config_lo(1).
---  0x0602 : universal_config_lo(2).
---  0x0604 : universal_config_lo(3).
---  0x0606 : universal_config_lo(4).
---  0x0608 : universal_config_lo(5).
---  0x060A : universal_config_lo(6).
---  0x060C : universal_config_lo(7).
---  0x060E : universal_config_lo(8).
---  0x0700 : universal_status_lo(1).
---  0x0702 : universal_status_lo(2).
---  0x0704 : universal_status_lo(3).
---  0x0706 : universal_status_lo(4).
---  0x0708 : universal_status_lo(5).
---  0x070A : universal_status_lo(6).
---  0x070C : universal_status_lo(7).
---  0x070E : universal_status_lo(8).
 -------------------------------------------------------------------------------------------------
 
 library IEEE;
@@ -122,37 +16,31 @@ use work.typedef_servo_enc.all;
 
 entity emif_con is
     PORT (    
-        ireset                      : in std_logic;                            -- Reset signal from pci.
-        iclk                        : in std_logic;                            -- MCU local & FPGA clock : 50MHz
-        ics                         : in std_logic;                            -- selection strobe from MCU.
-        iwr                         : in std_logic;                            -- write strobe from MCU.
-        ird                         : in std_logic;                            -- read strobe from MCU.
-        i_sa                        : in std_logic_vector(15 downto 0);        -- Address from MCU.
-        i_sd_in                     : in std_logic_vector(15 downto 0);        -- local data bus from MCU.
-        o_sd_out                    : out std_logic_vector(15 downto 0);       -- local data bus from MCU.
-        o_bus_oe                    : out std_logic;                           -- local bus output enable strobe.
+        ireset                      : in std_logic;
+        iclk                        : in std_logic;
+        ics                         : in std_logic;
+        iwr                         : in std_logic;
+        ird                         : in std_logic;
+        i_sa                        : in std_logic_vector(15 downto 0);
+        i_sd_in                     : in std_logic_vector(15 downto 0);
+        o_sd_out                    : out std_logic_vector(15 downto 0);
+        o_bus_oe                    : out std_logic;
 
-        soft_reset                  : out std_logic;                           -- software reset.
+        soft_reset                  : out std_logic;
         command_load_data           : out std_logic_vector(31 downto 0);
 
-        -- general purpose status and configure data --------------------------
         encoder_data                : in  ar_32bit_6ea;
         counter_config              : out ar_16bit_6ea;
         counter_status              : in  ar_16bit_6ea;
-        counter_load_exe            : out std_logic_vector(5 downto 0);        -- counter load exexcution
-        -----------------------------------------------------------------------
+        counter_load_exe            : out std_logic_vector(5 downto 0);
 
-        -- general purpose status and configure data --------------------------
         delta_sigma_config          : out ar_16bit_6ea;
         delta_sigma_status          : in ar_16bit_6ea;
         delta_sigma_data            : in ar_32bit_6ea;
-        -----------------------------------------------------------------------
 
-        -- general purpose status and configure data --------------------------
         spi_config                  : out std_logic_vector(15 downto 0);
         spi_status                  : in std_logic_vector(15 downto 0);
         spi_data                    : in std_logic_vector(31 downto 0);
-        -----------------------------------------------------------------------
 
         universal_config            : out ar_16bit_8ea;
         universal_status            : in ar_16bit_8ea;
@@ -166,10 +54,10 @@ end emif_con;
 
 architecture behavior of emif_con is
 
-    constant 	PRODUCT_VENDOR 	            : std_logic_vector(15 downto 0) := X"5053"; -- is "0x5053"
-	constant 	PRODUCT_ID 	                : std_logic_vector(15 downto 0) := X"0106"; -- 0x0104
-	constant 	PRODUCT_VER_MSB 	        : std_logic_vector(15 downto 0) := X"2024"; -- version  : 22024
-	constant 	PRODUCT_VER_LSB 	        : std_logic_vector(15 downto 0) := X"0608"; -- version  : 0314
+    constant    PRODUCT_VENDOR              : std_logic_vector(15 downto 0) := X"5053";
+    constant    PRODUCT_ID                  : std_logic_vector(15 downto 0) := X"0106";
+    constant    PRODUCT_VER_MSB             : std_logic_vector(15 downto 0) := X"2024";
+    constant    PRODUCT_VER_LSB             : std_logic_vector(15 downto 0) := X"0608";
 
     signal      data_port_lo                : std_logic_vector(31 downto 0);
     signal      write_port_lo               : std_logic_vector(15 downto 0);
@@ -182,7 +70,15 @@ architecture behavior of emif_con is
     signal      write_data_2nd              : std_logic_vector(15 downto 0);
     signal      write_data_lo               : std_logic_vector(15 downto 0);
     signal      write_state_lo              : std_logic_vector(3 downto 0);
-    signal      cs_or_wr_lo                 : std_logic;
+
+    -- ★ 기존 cs_or_wr_lo 제거, 새 신호 추가
+    signal      cs_or_wr_raw                : std_logic;
+    signal      cs_wr_d1                    : std_logic;
+    signal      cs_wr_d2                    : std_logic;
+    signal      cs_wr_rise                  : std_logic;
+    signal      i_sa_latch                  : std_logic_vector(15 downto 0);
+    signal      i_sd_latch                  : std_logic_vector(15 downto 0);
+    -- ★ 여기까지
 
     signal      read_cmd_exe_lo             : std_logic;
     signal      read_cmd_index_lo           : std_logic_vector(15 downto 0);
@@ -193,55 +89,76 @@ architecture behavior of emif_con is
 
     signal      soft_reset_lo               : std_logic;
 
--- general purpose status and configure data --------------------------
     signal        counter_config_lo           : ar_16bit_6ea;
-    signal        counter_load_exe_lo         : std_logic_vector(5 downto 0);        -- counter load exexcution
-    -----------------------------------------------------------------------
+    signal        counter_load_exe_lo         : std_logic_vector(5 downto 0);
 
-    -- general purpose status and configure data --------------------------
     signal        delta_sigma_config_lo       : ar_16bit_6ea;
-    -----------------------------------------------------------------------
 
-    -- general purpose status and configure data --------------------------
     signal        spi_config_lo               : std_logic_vector(15 downto 0);
     signal        spi_statue_lo               : std_logic_vector(15 downto 0);
-    -----------------------------------------------------------------------
 
     signal        gpio_out_lo                 : std_logic_vector(15 downto 0);
     signal        servo_io_out_lo             : std_logic_vector(15 downto 0);
-----------------------------------------------------------------------------------------------
 
     signal        universal_config_lo         : ar_16bit_8ea;
     signal        command_load_data_lo        : std_logic_vector(31 downto 0);
 
 begin
 
-cs_or_wr_lo <= ics or iwr;
+-- ★ 비동기 cs_or_wr_lo 제거, 동기식 교체 시작 ★
+
+-- write 사이클 활성 중(CS=0, WR=0) i_sa/i_sd_in을 동기 래치
+addr_data_latch : process(ireset, iclk) begin
+    if ireset = '0' then
+        i_sa_latch  <= (others => '0');
+        i_sd_latch  <= (others => '0');
+    elsif rising_edge(iclk) then
+        if ics = '0' and iwr = '0' then
+            i_sa_latch  <= i_sa;
+            i_sd_latch  <= i_sd_in;
+        end if;
+    end if;
+end process addr_data_latch;
+
+-- cs_or_wr rising edge 동기 검출
+cs_or_wr_raw <= ics or iwr;
+
+sync_edge_proc : process(ireset, iclk) begin
+    if ireset = '0' then
+        cs_wr_d1 <= '1';
+        cs_wr_d2 <= '1';
+    elsif rising_edge(iclk) then
+        cs_wr_d1 <= cs_or_wr_raw;
+        cs_wr_d2 <= cs_wr_d1;
+    end if;
+end process sync_edge_proc;
+
+cs_wr_rise <= cs_wr_d1 and (not cs_wr_d2);
+
+-- ★ write_exe_gen 완전 동기식으로 교체 (비동기 rising_edge 제거)
+write_exe_gen : process(ireset, iclk) begin
+    if ireset = '0' then
+        write_exe_lo   <= '0';
+        write_addr_1st <= (others => '0');
+        write_data_1st <= (others => '0');
+    elsif rising_edge(iclk) then
+        if write_done_lo = '1' then
+            write_exe_lo   <= '0';
+            write_addr_1st <= (others => '0');
+            write_data_1st <= (others => '0');
+        elsif cs_wr_rise = '1' then
+            write_exe_lo   <= '1';
+            write_addr_1st <= i_sa_latch;  -- 래치된 안정적인 값 사용
+            write_data_1st <= i_sd_latch;
+        end if;
+    end if;
+end process write_exe_gen;
+-- ★ 동기식 교체 끝 ★
+
 soft_reset  <= soft_reset_lo;
 universal_config    <= universal_config_lo;
 
--- First stage : latch the address and data port to sync with iclk
-write_exe_gen : process(ireset,  write_done_lo, cs_or_wr_lo) begin 
-    if ireset = '0' then
-        write_exe_lo    <=    '0';
-        write_addr_1st    <=    (others => '0');
-        write_data_1st    <=    (others => '0');
-    else
-        if write_done_lo = '1' then
-            write_exe_lo    <=    '0';
-            write_addr_1st    <=    (others => '0');
-            write_data_1st    <=    (others => '0');
-        else
-            if rising_edge(cs_or_wr_lo) then
-                write_exe_lo      <= '1';
-                write_addr_1st    <= i_sa;
-                write_data_1st    <= i_sd_in;
-            end if;    -- rising_edge(cs_or_wr)
-        end if;    -- cmd_done = '1'
-    end if;    -- reset = '0'
-end process write_exe_gen;
-
--- Second stage : Sync the address and data bus with iclk.
+-- Second stage : 원본 그대로 유지
 write_state_gen : process(ireset, iclk) begin 
     if ireset = '0' then
         write_state_lo    <=    "0000";
@@ -278,8 +195,8 @@ write_state_gen : process(ireset, iclk) begin
             write_state_lo    <=    "0000";
             write_done_lo    <=    '0';
             soft_reset_lo   <= '0';
-        end if;    -- write_exe_lo = '1'
-    end if;    -- rising_edge(iclk)
+        end if;
+    end if;
 end process write_state_gen;
 
 
@@ -328,11 +245,10 @@ port_con : process(ireset, iclk) begin
                 write_cmd_exe_lo <=  '0';
             end if;
         end if;
-    end if; -- rising_edge(clk)
+    end if;
 end process port_con;
 
 
--- external register write data ----------------------------------------------------------------
 command_load_data   <= command_load_data_lo;
 command_write_data_proc : process (ireset, iclk) begin
     if ireset = '0' then
@@ -345,9 +261,6 @@ command_write_data_proc : process (ireset, iclk) begin
 end process command_write_data_proc; 
 
 
--- register files ----------------------------------------------------------------------------
-
--- Direct mapped register ------------------------------------------------------------------
  counter_config         <= counter_config_lo;
  delta_sigma_config     <= delta_sigma_config_lo;
  spi_config             <= spi_config_lo;
@@ -362,7 +275,6 @@ end process command_write_data_proc;
         servo_io_out_lo         <= (others => '0');
         counter_load_exe        <= (others => '0');
     elsif rising_edge(iclk) then
-        -- Direct write
         if write_reg_exe_lo =  '1' then
             case write_addr_lo is
                 when X"0100" => counter_config_lo(1) <= write_port_lo;
@@ -371,40 +283,21 @@ end process command_write_data_proc;
                 when X"0106" => counter_config_lo(4) <= write_port_lo;
                 when X"0108" => counter_config_lo(5) <= write_port_lo;
                 when X"010A" => counter_config_lo(6) <= write_port_lo;
---              when X"010C" => 
---              when X"010E" => 
                 when X"0200" => delta_sigma_config_lo(1) <= write_port_lo;
                 when X"0202" => delta_sigma_config_lo(2) <= write_port_lo;
                 when X"0204" => delta_sigma_config_lo(3) <= write_port_lo;
                 when X"0206" => delta_sigma_config_lo(4) <= write_port_lo;
                 when X"0208" => delta_sigma_config_lo(5) <= write_port_lo;
                 when X"020A" => delta_sigma_config_lo(6) <= write_port_lo;
---              when X"020C" => 
---              when X"020E" => 
                 when X"0300" => spi_config_lo            <= write_port_lo;
---              when X"0302" => 
---              when X"0304" => 
---              when X"0306" => 
---              when X"0308" => 
---              when X"030A" => 
---              when X"030C" => 
---              when X"030E" => 
                 when X"0400" => gpio_out_lo            <= write_port_lo;
                 when X"0402" => gpio_out_lo            <= gpio_out_lo and write_port_lo;
                 when X"0404" => gpio_out_lo            <= gpio_out_lo or  write_port_lo; 
                 when X"0406" => gpio_out_lo            <= gpio_out_lo xor write_port_lo;  
---              when X"0408" => 
---              when X"040A" => 
---              when X"040C" => 
---              when X"040E" => 
                 when X"0410" => servo_io_out_lo        <= write_port_lo;
                 when X"0412" => servo_io_out_lo        <= servo_io_out_lo and write_port_lo;
                 when X"0414" => servo_io_out_lo        <= servo_io_out_lo or  write_port_lo; 
                 when X"0416" => servo_io_out_lo        <= servo_io_out_lo xor write_port_lo;  
---              when X"0418" => 
---              when X"041A" => 
---              when X"041C" => 
---              when X"041E" => 
                 when X"0600" => universal_config_lo(1)  <= write_port_lo;
                 when X"0602" => universal_config_lo(2)  <= write_port_lo;
                 when X"0604" => universal_config_lo(3)  <= write_port_lo;
@@ -416,7 +309,6 @@ end process command_write_data_proc;
                 when others => null;
             end case;
         end if;
-        -- In-direct write
         if write_cmd_exe_lo =  '1' then
             case write_cmd_index_lo is
                 when X"0500" => counter_load_exe(0) <= '1';
@@ -425,8 +317,6 @@ end process command_write_data_proc;
                 when X"0506" => counter_load_exe(3) <= '1';
                 when X"0508" => counter_load_exe(4) <= '1';
                 when X"050A" => counter_load_exe(5) <= '1';
---              when X"050C" => 
---              when X"050E" => 
                 when others => null;
             end case;
         else
@@ -434,10 +324,8 @@ end process command_write_data_proc;
         end if;
     end if;
 end process direct_memory_write;
-----------------------------------------------------------------------------------------------
 
 
--- Start of read cmd(cmd on 0xFFFA, write port on 0xFFF2, 0xFFF4) ----------------------------
 process(ireset, iclk) begin
     if ireset = '0' then
         read_result_lo              <= X"00000000";
@@ -451,25 +339,20 @@ process(ireset, iclk) begin
               when X"0228" => read_result_lo   <= delta_sigma_data(5);
               when X"022A" => read_result_lo   <= delta_sigma_data(6);
               when X"0320" => read_result_lo   <= spi_data;
---            when X"022C" => 
---            when X"022E" => 
               when X"0500" => read_result_lo   <= encoder_data(1);
               when X"0502" => read_result_lo   <= encoder_data(2);
               when X"0504" => read_result_lo   <= encoder_data(3);
               when X"0506" => read_result_lo   <= encoder_data(4);
               when X"0508" => read_result_lo   <= encoder_data(5);
               when X"050A" => read_result_lo   <= encoder_data(6);
---            when X"050C" => 
---            when X"050E" => 
               when others => read_result_lo   <= X"BAD0BAD0";
           end case;
         end if;
     end if;
 end process;
--- End of read cmd ------------------------------------------------------------------------------------
 
 
--- Start of Read bus mux ------------------------------------------------------------------------------
+-- Read 경로 완전 원본 그대로 -------------------------------------------------------
 o_bus_oe <= '1' when ird = '0' and ics = '0' else '0';
 Read_operation : process(ird, ics, i_sa, 
         gpio_out_lo,
@@ -577,6 +460,5 @@ Read_operation : process(ird, ics, i_sa,
         o_sd_out    <=    X"BBBB";
     end if;
 end process Read_operation;
--- End of Read bus mux
 
-end behavior;                      
+end behavior;

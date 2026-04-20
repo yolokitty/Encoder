@@ -8,12 +8,12 @@
   **** SW Build 6299465 on Fri Nov 14 19:35:11 GMT 2025
   **** IP Build 6300035 on Fri Nov 14 10:48:45 MST 2025
   **** SharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025
-  **** Start of session at: Fri Apr 17 16:10:12 2026
+  **** Start of session at: Mon Apr 20 15:59:35 2026
     ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
     ** Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 
 source servo_enc_v1_0.tcl -notrace
-create_project: Time (s): cpu = 00:00:13 ; elapsed = 00:00:11 . Memory (MB): peak = 532.391 ; gain = 219.008
+create_project: Time (s): cpu = 00:00:07 ; elapsed = 00:00:05 . Memory (MB): peak = 534.297 ; gain = 223.590
 Command: read_checkpoint -auto_incremental -incremental C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/targeting/servo_encoder_v1_0.srcs/utils_1/imports/synth_1/servo_enc_v1_0.dcp
 INFO: [Vivado 12-5825] Read reference checkpoint from C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/targeting/servo_encoder_v1_0.srcs/utils_1/imports/synth_1/servo_enc_v1_0.dcp for incremental synthesis
 INFO: [Vivado 12-7989] Please ensure there are no constraint changes
@@ -26,15 +26,15 @@ INFO: [Designutils 20-5440] No compile time benefit to using incremental synthes
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 35088
+INFO: [Synth 8-7075] Helper process launched with PID 27524
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 1234.547 ; gain = 540.867
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 1233.312 ; gain = 540.738
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-9112] actual for formal port 'i_sa' is neither a static name nor a globally static expression [C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/servo_enc_v1_0.vhd:301]
 INFO: [Synth 8-638] synthesizing module 'servo_enc_v1_0' [C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/servo_enc_v1_0.vhd:110]
-INFO: [Synth 8-3491] module 'emif_con' declared at 'C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/emif_con.vhd:123' bound to instance 'U_emif_con' of component 'emif_con' [C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/servo_enc_v1_0.vhd:294]
-INFO: [Synth 8-638] synthesizing module 'emif_con' [C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/emif_con.vhd:167]
-INFO: [Synth 8-256] done synthesizing module 'emif_con' (0#1) [C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/emif_con.vhd:167]
+INFO: [Synth 8-3491] module 'emif_con' declared at 'C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/emif_con.vhd:17' bound to instance 'U_emif_con' of component 'emif_con' [C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/servo_enc_v1_0.vhd:294]
+INFO: [Synth 8-638] synthesizing module 'emif_con' [C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/emif_con.vhd:55]
+INFO: [Synth 8-256] done synthesizing module 'emif_con' (0#1) [C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/emif_con.vhd:55]
 INFO: [Synth 8-3491] module 'servo_encoder_con' declared at 'C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/servo_encoder_con.vhd:41' bound to instance 'U1_servo_encoder_con' of component 'servo_encoder_con' [C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/servo_enc_v1_0.vhd:362]
 INFO: [Synth 8-638] synthesizing module 'servo_encoder_con' [C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/servo_encoder_con.vhd:78]
 INFO: [Synth 8-3491] module 'tamakawa_interface' declared at 'C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/tamakawa_interface.vhd:45' bound to instance 'U_tamakawa_interface1' of component 'tamakawa_interface' [C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/servo_encoder_con.vhd:176]
@@ -129,18 +129,18 @@ WARNING: [Synth 8-7129] Port gp_in[2] in module servo_enc_v1_0 is either unconne
 WARNING: [Synth 8-7129] Port gp_in[1] in module servo_enc_v1_0 is either unconnected or has no load
 WARNING: [Synth 8-7129] Port gp_in[0] in module servo_enc_v1_0 is either unconnected or has no load
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 1376.344 ; gain = 682.664
+Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1375.750 ; gain = 683.176
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 1376.344 ; gain = 682.664
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1375.750 ; gain = 683.176
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 1376.344 ; gain = 682.664
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1375.750 ; gain = 683.176
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.103 . Memory (MB): peak = 1376.344 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.058 . Memory (MB): peak = 1375.750 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
@@ -151,28 +151,28 @@ INFO: [Project 1-236] Implementation specific constraints were found while readi
 Resolution: To avoid this warning, move constraints listed in [.Xil/servo_enc_v1_0_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1432.066 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1446.754 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.045 . Memory (MB): peak = 1432.066 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.045 . Memory (MB): peak = 1446.754 ; gain = 0.000
 INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:18 ; elapsed = 00:00:21 . Memory (MB): peak = 1432.066 ; gain = 738.387
+Finished Constraint Validation : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 1446.754 ; gain = 754.180
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7s15ftgb196-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:18 ; elapsed = 00:00:21 . Memory (MB): peak = 1432.066 ; gain = 738.387
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 1446.754 ; gain = 754.180
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:19 ; elapsed = 00:00:21 . Memory (MB): peak = 1432.066 ; gain = 738.387
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 1446.754 ; gain = 754.180
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'tk_state_reg' in module 'tamakawa_interface'
 ---------------------------------------------------------------------------------------------------
@@ -199,7 +199,7 @@ INFO: [Synth 8-802] inferred FSM for state register 'tk_state_reg' in module 'ta
 INFO: [Synth 8-3354] encoded FSM with state register 'tk_state_reg' using encoding 'sequential' in module 'tamakawa_interface'
 WARNING: [Synth 8-327] inferring latch for variable 'mosi_reg' [C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/spi_master.vhd:67]
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:21 ; elapsed = 00:00:23 . Memory (MB): peak = 1432.066 ; gain = 738.387
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 1446.754 ; gain = 754.180
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -223,7 +223,7 @@ Detailed RTL Component Info :
 	               32 Bit    Registers := 11    
 	               25 Bit    Registers := 24    
 	               24 Bit    Registers := 8     
-	               16 Bit    Registers := 42    
+	               16 Bit    Registers := 44    
 	               14 Bit    Registers := 1     
 	                9 Bit    Registers := 4     
 	                8 Bit    Registers := 104   
@@ -231,11 +231,11 @@ Detailed RTL Component Info :
 	                5 Bit    Registers := 10    
 	                4 Bit    Registers := 25    
 	                3 Bit    Registers := 8     
-	                1 Bit    Registers := 128   
+	                1 Bit    Registers := 130   
 +---Muxes : 
 	   2 Input   32 Bit        Muxes := 7     
 	   3 Input   32 Bit        Muxes := 1     
-	   2 Input   16 Bit        Muxes := 18    
+	   2 Input   16 Bit        Muxes := 20    
 	  16 Input   16 Bit        Muxes := 4     
 	   2 Input    9 Bit        Muxes := 4     
 	  16 Input    8 Bit        Muxes := 32    
@@ -246,7 +246,7 @@ Detailed RTL Component Info :
 	  16 Input    4 Bit        Muxes := 8     
 	   2 Input    3 Bit        Muxes := 22    
 	   5 Input    2 Bit        Muxes := 1     
-	   2 Input    1 Bit        Muxes := 287   
+	   2 Input    1 Bit        Muxes := 289   
 	  16 Input    1 Bit        Muxes := 76    
 	   4 Input    1 Bit        Muxes := 4     
 ---------------------------------------------------------------------------------
@@ -313,25 +313,25 @@ WARNING: [Synth 8-7129] Port gp_in[1] in module servo_enc_v1_0 is either unconne
 WARNING: [Synth 8-7129] Port gp_in[0] in module servo_enc_v1_0 is either unconnected or has no load
 WARNING: [Synth 8-3332] Sequential element (mosi_reg) is unused and will be removed from module spi_master.
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:38 ; elapsed = 00:00:43 . Memory (MB): peak = 1500.027 ; gain = 806.348
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:23 ; elapsed = 00:00:24 . Memory (MB): peak = 1507.270 ; gain = 814.695
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:44 ; elapsed = 00:00:50 . Memory (MB): peak = 1581.930 ; gain = 888.250
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:26 ; elapsed = 00:00:28 . Memory (MB): peak = 1584.168 ; gain = 891.594
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:46 ; elapsed = 00:00:52 . Memory (MB): peak = 1602.156 ; gain = 908.477
+Finished Timing Optimization : Time (s): cpu = 00:00:27 ; elapsed = 00:00:29 . Memory (MB): peak = 1604.473 ; gain = 911.898
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:48 ; elapsed = 00:00:55 . Memory (MB): peak = 1660.109 ; gain = 966.430
+Finished Technology Mapping : Time (s): cpu = 00:00:28 ; elapsed = 00:00:30 . Memory (MB): peak = 1663.074 ; gain = 970.500
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -349,37 +349,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:52 ; elapsed = 00:00:58 . Memory (MB): peak = 1842.980 ; gain = 1149.301
+Finished IO Insertion : Time (s): cpu = 00:00:31 ; elapsed = 00:00:33 . Memory (MB): peak = 1845.809 ; gain = 1153.234
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:52 ; elapsed = 00:00:58 . Memory (MB): peak = 1842.980 ; gain = 1149.301
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:31 ; elapsed = 00:00:33 . Memory (MB): peak = 1845.809 ; gain = 1153.234
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:52 ; elapsed = 00:00:59 . Memory (MB): peak = 1842.980 ; gain = 1149.301
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:32 ; elapsed = 00:00:34 . Memory (MB): peak = 1845.809 ; gain = 1153.234
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:52 ; elapsed = 00:00:59 . Memory (MB): peak = 1842.980 ; gain = 1149.301
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:32 ; elapsed = 00:00:34 . Memory (MB): peak = 1845.809 ; gain = 1153.234
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:52 ; elapsed = 00:00:59 . Memory (MB): peak = 1842.980 ; gain = 1149.301
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:32 ; elapsed = 00:00:34 . Memory (MB): peak = 1845.809 ; gain = 1153.234
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:52 ; elapsed = 00:00:59 . Memory (MB): peak = 1842.980 ; gain = 1149.301
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:32 ; elapsed = 00:00:34 . Memory (MB): peak = 1845.809 ; gain = 1153.234
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -398,14 +398,14 @@ Report Cell Usage:
 |1     |BUFG   |     1|
 |2     |CARRY4 |   353|
 |3     |LUT1   |   196|
-|4     |LUT2   |  1071|
-|5     |LUT3   |   536|
-|6     |LUT4   |   508|
+|4     |LUT2   |  1101|
+|5     |LUT3   |   542|
+|6     |LUT4   |   505|
 |7     |LUT5   |   477|
 |8     |LUT6   |   886|
 |9     |MUXF7  |    16|
-|10    |FDCE   |  2119|
-|11    |FDPE   |     2|
+|10    |FDCE   |  2149|
+|11    |FDPE   |     4|
 |12    |FDRE   |  1208|
 |13    |FDSE   |     8|
 |14    |IBUF   |    38|
@@ -414,28 +414,28 @@ Report Cell Usage:
 |17    |OBUFT  |     1|
 +------+-------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:52 ; elapsed = 00:00:59 . Memory (MB): peak = 1842.980 ; gain = 1149.301
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:32 ; elapsed = 00:00:34 . Memory (MB): peak = 1845.809 ; gain = 1153.234
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 49 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:41 ; elapsed = 00:00:56 . Memory (MB): peak = 1842.980 ; gain = 1093.578
-Synthesis Optimization Complete : Time (s): cpu = 00:00:52 ; elapsed = 00:00:59 . Memory (MB): peak = 1842.980 ; gain = 1149.301
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:25 ; elapsed = 00:00:32 . Memory (MB): peak = 1845.809 ; gain = 1082.230
+Synthesis Optimization Complete : Time (s): cpu = 00:00:32 ; elapsed = 00:00:34 . Memory (MB): peak = 1845.809 ; gain = 1153.234
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.049 . Memory (MB): peak = 1852.148 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.050 . Memory (MB): peak = 1854.969 ; gain = 0.000
 INFO: [Netlist 29-17] Analyzing 385 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1855.828 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1858.684 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 16 instances were transformed.
   IOBUF => IOBUF (IBUF, OBUFT): 16 instances
 
-Synth Design complete | Checksum: f8e4a240
+Synth Design complete | Checksum: e3de029c
 INFO: [Common 17-83] Releasing license: Synthesis
 48 Infos, 122 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:56 ; elapsed = 00:01:06 . Memory (MB): peak = 1855.828 ; gain = 1316.902
-Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.013 . Memory (MB): peak = 1855.828 ; gain = 0.000
+synth_design: Time (s): cpu = 00:00:35 ; elapsed = 00:00:39 . Memory (MB): peak = 1858.684 ; gain = 1317.719
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.013 . Memory (MB): peak = 1858.684 ; gain = 0.000
 INFO: [Common 17-1381] The checkpoint 'C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/targeting/servo_encoder_v1_0.runs/synth_1/servo_enc_v1_0.dcp' has been generated.
 INFO: [Vivado 12-24828] Executing command : report_utilization -file servo_enc_v1_0_utilization_synth.rpt -pb servo_enc_v1_0_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Fri Apr 17 16:11:33 2026...
+INFO: [Common 17-206] Exiting Vivado at Mon Apr 20 16:00:23 2026...
