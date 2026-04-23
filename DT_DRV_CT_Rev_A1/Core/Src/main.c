@@ -98,10 +98,29 @@ int main(void)
   MX_FMC_Init();
   /* USER CODE BEGIN 2 */
 
+  // FPGA 안정화 대기 (먼저)
+  uint32_t nStartTick = HAL_GetTick();
+  while((HAL_GetTick() - nStartTick) < 500);
 
+  // 안정화 후 write + 검증
+  volatile uint16_t verify = 0;
+  uint8_t retry = 0;
+
+  while(retry < 10)
+  {
+      *(volatile uint16_t*)ADDR_COUNTER_CONFIG(0) = 0x0330;  // 필터값 포함
+
+      nStartTick = HAL_GetTick();
+      while((HAL_GetTick() - nStartTick) < 10);
+
+      verify = *(volatile uint16_t*)ADDR_COUNTER_CONFIG(0);
+      if(verify == 0x0330)
+          break;
+      retry++;
+  }
 
   // Set Counter config register(2 phase, 4 times)
-  *(volatile uint16_t*)ADDR_COUNTER_CONFIG(0) = 0x0030;
+//  *(volatile uint16_t*)ADDR_COUNTER_CONFIG(0) = 0x0030;
 //    *(volatile uint16_t*)ADDR_COUNTER_CONFIG(0) = 0x0130;
   // Set Counter config register(2 phase, 2 times)
 //  *(volatile uint16_t*)ADDR_COUNTER_CONFIG(0) = 0x0120;
@@ -382,6 +401,7 @@ static void MX_GPIO_Init(void)
 /* USER CODE END 4 */
 
 /* MPU Configuration */
+
 
 void MPU_Config(void)
 {
