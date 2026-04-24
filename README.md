@@ -1,4 +1,10 @@
+
 <img width="1486" height="778" alt="결과" src="https://github.com/user-attachments/assets/20c8cd85-4b42-41c3-9fb7-37a39d70cf64" />
+시뮬레이션
+<img width="941" height="522" alt="실제" src="https://github.com/user-attachments/assets/2dee4102-d3d0-471a-bdce-d313edd829d5" />
+디버깅
+<img width="1393" height="518" alt="실제2" src="https://github.com/user-attachments/assets/9fa8c0b9-0d24-4260-a4bc-c735b097d695" />
+필터 8단계 ON
 
 ## 📌 Encoder Phase A Processing Flow
 
