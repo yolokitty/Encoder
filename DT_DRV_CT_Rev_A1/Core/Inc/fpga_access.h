@@ -53,8 +53,10 @@ enum {
 
 extern void WriteRegData32(uint16_t usIndex, uint32_t ulData);
 extern uint32_t ReadRegData32(uint16_t usIndex);
+extern uint16_t ReadVendorId16(void);
 
 extern uint32_t StatusSet_ActualPosition(uint8_t usChNo, int32_t ActPos);
 extern uint32_t StatusGet_ActualPosition(uint8_t usChNo, int32_t *pActPos);
+
 
 //#endif /* USER_INC_FPGA_ACCESS_H_ */

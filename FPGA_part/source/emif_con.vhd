@@ -77,6 +77,11 @@ architecture behavior of emif_con is
     signal      cs_wr_rise                  : std_logic;
     signal      i_sa_latch                  : std_logic_vector(15 downto 0);
     signal      i_sd_latch                  : std_logic_vector(15 downto 0);
+    
+    signal      cs_or_rd_raw                : std_logic;
+    signal      cs_rd_d1                    : std_logic;
+    signal      cs_rd_d2                    : std_logic;
+    signal      cs_rd_fall                  : std_logic;
 
     signal      read_cmd_exe_lo             : std_logic;
     signal      read_cmd_index_lo           : std_logic_vector(15 downto 0);
@@ -119,6 +124,7 @@ addr_data_latch : process(ireset, iclk) begin
 end process addr_data_latch;
 
 cs_or_wr_raw <= ics or iwr;
+cs_or_rd_raw <= ics or ird;
 
 sync_edge_proc : process(ireset, iclk) begin
     if ireset = '0' then
@@ -130,9 +136,21 @@ sync_edge_proc : process(ireset, iclk) begin
     end if;
 end process sync_edge_proc;
 
+sync_read_edge_proc : process(ireset, iclk) begin
+    if ireset = '0' then
+        cs_rd_d1 <= '1';
+        cs_rd_d2 <= '1';
+    elsif rising_edge(iclk) then
+        cs_rd_d1 <= cs_or_rd_raw;
+        cs_rd_d2 <= cs_rd_d1;
+    end if;
+end process sync_read_edge_proc;
+
 cs_wr_rise <= cs_wr_d1 and (not cs_wr_d2);
+cs_rd_fall <= (not cs_rd_d1) and cs_rd_d2;
 
 write_exe_gen : process(ireset, iclk) begin
+
     if ireset = '0' then
         write_exe_lo   <= '0';
         write_addr_1st <= (others => '0');
@@ -149,6 +167,24 @@ write_exe_gen : process(ireset, iclk) begin
         end if;
     end if;
 end process write_exe_gen;
+
+encoder_transaction_latch_proc : process(ireset, iclk) begin
+    if ireset = '0' then
+        encoder_latch <= (others => X"00000000");
+    elsif rising_edge(iclk) then
+        if cs_rd_fall = '1' then
+            if i_sa = X"0520" or
+               i_sa = X"0524" or
+               i_sa = X"0528" or
+               i_sa = X"052C" or
+               i_sa = X"0530" or
+               i_sa = X"0534" then
+                encoder_latch <= encoder_data;
+            end if;
+        end if;
+    end if;
+end process encoder_transaction_latch_proc;
+
 
 soft_reset  <= soft_reset_lo;
 universal_config    <= universal_config_lo;
@@ -368,7 +404,7 @@ Read_operation : process(ird, ics, i_sa,
         universal_status,
         servo_io_out_lo,
         servo_io_in,
-        encoder_data        -- ★ 직접 읽기를 위해 추가
+        encoder_latch        -- ★ 직접 읽기를 위해 추가
 ) begin
     if ird = '0' and ics = '0' then
         case i_sa is
@@ -429,20 +465,19 @@ Read_operation : process(ird, ics, i_sa,
             when X"070C" => o_sd_out    <= universal_status(7);
             when X"070E" => o_sd_out    <= universal_status(8);
 
-            -- ★ 인코더 직접 읽기 주소 추가 (cmd 없이 2회 접근으로 읽기) ★
-            when X"0520" => o_sd_out    <= encoder_data(1)(15 downto 0);
-            when X"0522" => o_sd_out    <= encoder_data(1)(31 downto 16);
-            when X"0524" => o_sd_out    <= encoder_data(2)(15 downto 0);
-            when X"0526" => o_sd_out    <= encoder_data(2)(31 downto 16);
-            when X"0528" => o_sd_out    <= encoder_data(3)(15 downto 0);
-            when X"052A" => o_sd_out    <= encoder_data(3)(31 downto 16);
-            when X"052C" => o_sd_out    <= encoder_data(4)(15 downto 0);
-            when X"052E" => o_sd_out    <= encoder_data(4)(31 downto 16);
-            when X"0530" => o_sd_out    <= encoder_data(5)(15 downto 0);
-            when X"0532" => o_sd_out    <= encoder_data(5)(31 downto 16);
-            when X"0534" => o_sd_out    <= encoder_data(6)(15 downto 0);
-            when X"0536" => o_sd_out    <= encoder_data(6)(31 downto 16);
-            -- ★ 여기까지 ★
+            when X"0520" => o_sd_out    <= encoder_latch(1)(15 downto 0);
+            when X"0522" => o_sd_out    <= encoder_latch(1)(31 downto 16);
+            when X"0524" => o_sd_out    <= encoder_latch(2)(15 downto 0);
+            when X"0526" => o_sd_out    <= encoder_latch(2)(31 downto 16);
+            when X"0528" => o_sd_out    <= encoder_latch(3)(15 downto 0);
+            when X"052A" => o_sd_out    <= encoder_latch(3)(31 downto 16);
+            when X"052C" => o_sd_out    <= encoder_latch(4)(15 downto 0);
+            when X"052E" => o_sd_out    <= encoder_latch(4)(31 downto 16);
+            when X"0530" => o_sd_out    <= encoder_latch(5)(15 downto 0);
+            when X"0532" => o_sd_out    <= encoder_latch(5)(31 downto 16);
+            when X"0534" => o_sd_out    <= encoder_latch(6)(15 downto 0);
+            when X"0536" => o_sd_out    <= encoder_latch(6)(31 downto 16);
+
 
             when X"6EE0"   => o_sd_out    <= PRODUCT_VENDOR;
             when X"6EE2"   => o_sd_out    <= PRODUCT_ID;

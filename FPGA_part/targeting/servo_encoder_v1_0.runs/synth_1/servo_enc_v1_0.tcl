@@ -56,8 +56,8 @@ if {$::dispatch::connected} {
 }
 
 OPTRACE "synth_1" START { ROLLUP_AUTO }
+set_param tcl.collectionResultDisplayLimit 0
 set_param general.usePosixSpawnForFork 1
-set_param chipscope.maxJobs 5
 set_param xicom.use_bs_reader 1
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7s15ftgb196-1
@@ -65,8 +65,10 @@ create_project -in_memory -part xc7s15ftgb196-1
 set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
 set_param synth.vivado.isSynthRun true
+set_msg_config -source 4 -id {IP_Flow 19-2162} -severity warning -new_severity info
 set_property webtalk.parent_dir C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/targeting/servo_encoder_v1_0.cache/wt [current_project]
 set_property parent.project_path C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/targeting/servo_encoder_v1_0.xpr [current_project]
+set_property XPM_LIBRARIES {XPM_CDC XPM_MEMORY} [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language VHDL [current_project]
 set_property ip_output_repo c:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/targeting/servo_encoder_v1_0.cache/ip [current_project]
@@ -82,6 +84,12 @@ read_vhdl -library xil_defaultlib {
   C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/tamakawa_interface.vhd
   C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/servo_enc_v1_0.vhd
 }
+read_ip -quiet C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/targeting/servo_encoder_v1_0.srcs/sources_1/ip/ila_0_1/ila_0.xci
+set_property used_in_synthesis false [get_files -all c:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/targeting/servo_encoder_v1_0.gen/sources_1/ip/ila_0_1/ila_v6_2/constraints/ila_impl.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/targeting/servo_encoder_v1_0.gen/sources_1/ip/ila_0_1/ila_v6_2/constraints/ila_impl.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/targeting/servo_encoder_v1_0.gen/sources_1/ip/ila_0_1/ila_v6_2/constraints/ila.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/targeting/servo_encoder_v1_0.gen/sources_1/ip/ila_0_1/ila_0_ooc.xdc]
+
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
 # stitched into the results of this synthesis run. Any black boxes in the
@@ -94,6 +102,8 @@ foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
 read_xdc C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/servo_enc.xdc
 set_property used_in_implementation false [get_files C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/servo_enc.xdc]
 
+read_xdc dont_touch.xdc
+set_property used_in_implementation false [get_files dont_touch.xdc]
 set_param ips.enableIPCacheLiteLoad 1
 
 read_checkpoint -auto_incremental -incremental C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/targeting/servo_encoder_v1_0.srcs/utils_1/imports/synth_1/servo_enc_v1_0.dcp

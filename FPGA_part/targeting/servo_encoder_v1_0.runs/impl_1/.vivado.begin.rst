@@ -1,55 +1,5 @@
 <?xml version="1.0"?>
 <ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="RESEARCH" Host="DESKTOP-GNEDNNB" Pid="27324" HostCore="20" HostMemory="034189967360">
-    </Process>
-</ProcessHandle>
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="RESEARCH" Host="DESKTOP-GNEDNNB" Pid="25876" HostCore="20" HostMemory="034189967360">
-    </Process>
-</ProcessHandle>
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="RESEARCH" Host="DESKTOP-GNEDNNB" Pid="26720" HostCore="20" HostMemory="034189967360">
-    </Process>
-</ProcessHandle>
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="RESEARCH" Host="DESKTOP-GNEDNNB" Pid="5876" HostCore="20" HostMemory="034189967360">
-    </Process>
-</ProcessHandle>
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="RESEARCH" Host="DESKTOP-GNEDNNB" Pid="35020" HostCore="20" HostMemory="034189967360">
-    </Process>
-</ProcessHandle>
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="RESEARCH" Host="DESKTOP-GNEDNNB" Pid="27384" HostCore="20" HostMemory="034189967360">
-    </Process>
-</ProcessHandle>
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="RESEARCH" Host="DESKTOP-GNEDNNB" Pid="34296" HostCore="20" HostMemory="034189967360">
-    </Process>
-</ProcessHandle>
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="RESEARCH" Host="DESKTOP-GNEDNNB" Pid="34168" HostCore="20" HostMemory="034189967360">
-    </Process>
-</ProcessHandle>
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="RESEARCH" Host="DESKTOP-GNEDNNB" Pid="26184" HostCore="20" HostMemory="034189967360">
-    </Process>
-</ProcessHandle>
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="RESEARCH" Host="DESKTOP-GNEDNNB" Pid="12092" HostCore="20" HostMemory="034189967360">
-    </Process>
-</ProcessHandle>
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="RESEARCH" Host="DESKTOP-GNEDNNB" Pid="7292" HostCore="20" HostMemory="034189967360">
+    <Process Command="vivado.bat" Owner="RESEARCH" Host="DESKTOP-GNEDNNB" Pid="6660" HostCore="20" HostMemory="034189967360">
     </Process>
 </ProcessHandle>

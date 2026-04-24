@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="tb_servo_encoder_con_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="tb_servo_encoder_con" />
+            <top_module name="typedef_servo_enc" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="286.530 ns"></ZoomStartTime>
+      <ZoomEndTime time="491.331 ns"></ZoomEndTime>
+      <Cursor1Time time="297.390 ns"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="222"></NameColumnWidth>
+      <ValueColumnWidth column_width="222"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="22" />
+   <wave_markers>
+      <marker time="460908" label="" />
+      <marker time="382788" label="" />
+      <marker time="429660" label="" />
+      <marker time="312500" label="" />
+   </wave_markers>
+   <wvobject fp_name="/tb_servo_encoder_con/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_servo_encoder_con/reset" type="logic">
+      <obj_property name="ElementShortName">reset</obj_property>
+      <obj_property name="ObjectShortName">reset</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_servo_encoder_con/soft_reset" type="logic">
+      <obj_property name="ElementShortName">soft_reset</obj_property>
+      <obj_property name="ObjectShortName">soft_reset</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_servo_encoder_con/enc_a" type="logic">
+      <obj_property name="ElementShortName">enc_a</obj_property>
+      <obj_property name="ObjectShortName">enc_a</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_servo_encoder_con/dbg_phase_a_tmp[0]" type="logic">
+      <obj_property name="ElementShortName">[0]</obj_property>
+      <obj_property name="ObjectShortName">[0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_servo_encoder_con/dbg_phase_a_tmp[1]" type="logic">
+      <obj_property name="ElementShortName">[1]</obj_property>
+      <obj_property name="ObjectShortName">[1]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_servo_encoder_con/dbg_phase_a_tmp[2]" type="logic">
+      <obj_property name="ElementShortName">[2]</obj_property>
+      <obj_property name="ObjectShortName">[2]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_servo_encoder_con/dbg_phase_a_tmp[3]" type="logic">
+      <obj_property name="ElementShortName">[3]</obj_property>
+      <obj_property name="ObjectShortName">[3]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_servo_encoder_con/dbg_phase_a_filter[0]" type="logic">
+      <obj_property name="ElementShortName">[0]</obj_property>
+      <obj_property name="ObjectShortName">[0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_servo_encoder_con/dbg_phase_a_filter[1]" type="logic">
+      <obj_property name="ElementShortName">[1]</obj_property>
+      <obj_property name="ObjectShortName">[1]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_servo_encoder_con/dbg_phase_a_r" type="logic">
+      <obj_property name="ElementShortName">dbg_phase_a_r</obj_property>
+      <obj_property name="ObjectShortName">dbg_phase_a_r</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_servo_encoder_con/watch_enc_en" type="logic">
+      <obj_property name="ElementShortName">watch_enc_en</obj_property>
+      <obj_property name="ObjectShortName">watch_enc_en</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_servo_encoder_con/watch_counter_data" type="array">
+      <obj_property name="ElementShortName">watch_counter_data[31:0]</obj_property>
+      <obj_property name="ObjectShortName">watch_counter_data[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_servo_encoder_con/enc_b" type="logic">
+      <obj_property name="ElementShortName">enc_b</obj_property>
+      <obj_property name="ObjectShortName">enc_b</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_servo_encoder_con/watch_enc_dir" type="logic">
+      <obj_property name="ElementShortName">watch_enc_dir</obj_property>
+      <obj_property name="ObjectShortName">watch_enc_dir</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_servo_encoder_con/dbg_phase_b_exe" type="logic">
+      <obj_property name="ElementShortName">dbg_phase_b_exe</obj_property>
+      <obj_property name="ObjectShortName">dbg_phase_b_exe</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_servo_encoder_con/dbg_phase_z_exe" type="logic">
+      <obj_property name="ElementShortName">dbg_phase_z_exe</obj_property>
+      <obj_property name="ObjectShortName">dbg_phase_z_exe</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_servo_encoder_con/dbg_hall_w_exe" type="logic">
+      <obj_property name="ElementShortName">dbg_hall_w_exe</obj_property>
+      <obj_property name="ObjectShortName">dbg_hall_w_exe</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_servo_encoder_con/dbg_phase_b_r" type="logic">
+      <obj_property name="ElementShortName">dbg_phase_b_r</obj_property>
+      <obj_property name="ObjectShortName">dbg_phase_b_r</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_servo_encoder_con/dbg_phase_a_f" type="logic">
+      <obj_property name="ElementShortName">dbg_phase_a_f</obj_property>
+      <obj_property name="ObjectShortName">dbg_phase_a_f</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_servo_encoder_con/dbg_phase_b_f" type="logic">
+      <obj_property name="ElementShortName">dbg_phase_b_f</obj_property>
+      <obj_property name="ObjectShortName">dbg_phase_b_f</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_servo_encoder_con/dbg_phase_b_tmp" type="array">
+      <obj_property name="ElementShortName">dbg_phase_b_tmp[3:0]</obj_property>
+      <obj_property name="ObjectShortName">dbg_phase_b_tmp[3:0]</obj_property>
+   </wvobject>
+</wave_config>

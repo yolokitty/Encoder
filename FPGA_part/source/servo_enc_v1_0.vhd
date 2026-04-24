@@ -12,7 +12,6 @@
 -- 4) 
 -- 5) 
 -------------------------------------------------------------------------------------------------
-                
 
 Library ieee;
 Use ieee.std_logic_1164.all;
@@ -153,41 +152,49 @@ ARCHITECTURE behavior OF servo_enc_v1_0 is
     );
     end component;
 
-
     component servo_encoder_con
     port(
-        reset              : in std_logic;
-        clk                : in std_logic;
-        soft_reset         : in std_logic;                        -- Software reset signal.
+        reset                : in std_logic;
+        clk                  : in std_logic;
+        soft_reset           : in std_logic;                        -- Software reset signal.
 
     ---- encoder #1 input interface --------------------------------------------
-        enc_a              : in std_logic;
-        enc_b              : in std_logic;
-        enc_c              : in std_logic;
-        hall_w             : in std_logic;
+        enc_a                : in std_logic;
+        enc_b                : in std_logic;
+        enc_c                : in std_logic;
+        hall_w               : in std_logic;
 
-        enc_a_filtered     : out std_logic;
-        enc_b_filtered     : out std_logic;
-        enc_c_filtered     : out std_logic;
-        hall_w_filtered    : out std_logic;
+        enc_a_filtered       : out std_logic;
+        enc_b_filtered       : out std_logic;
+        enc_c_filtered       : out std_logic;
+        hall_w_filtered      : out std_logic;
 
-        uart_rx_cnt1_1      : in std_logic;
-        uart_tx_cnt1_1      : out std_logic;
-        uart_dir_cnt1_1     : out std_logic;
+        uart_rx_cnt1_1       : in std_logic;
+        uart_tx_cnt1_1       : out std_logic;
+        uart_dir_cnt1_1      : out std_logic;
 
-        uart_rx_cnt1_2      : in std_logic;
-        uart_tx_cnt1_2      : out std_logic;
-        uart_dir_cnt1_2     : out std_logic;
+        uart_rx_cnt1_2       : in std_logic;
+        uart_tx_cnt1_2       : out std_logic;
+        uart_dir_cnt1_2      : out std_logic;
 
-        counter_load_enc   : in std_logic_vector(2 downto 0);
-        counter_load_data  : in std_logic_vector(31 downto 0);
+        counter_load_enc     : in std_logic_vector(2 downto 0);
+        counter_load_data    : in std_logic_vector(31 downto 0);
 
-        counter_config     : in ar_16bit_3ea;
+        counter_config       : in ar_16bit_3ea;
 
-        counter_status     : out ar_16bit_3ea;
-        counter_data       : out ar_32bit_3ea;
-        counter_enc_en     : out std_logic_vector(2 downto 0);
-        counter_enc_dir    : out std_logic_vector(2 downto 0)
+        counter_status       : out ar_16bit_3ea;
+        counter_data         : out ar_32bit_3ea;
+        counter_enc_en       : out std_logic_vector(2 downto 0);
+        counter_enc_dir      : out std_logic_vector(2 downto 0);
+
+        dbg_phase_a_tmp      : out std_logic_vector(3 downto 0);
+        dbg_phase_b_tmp      : out std_logic_vector(3 downto 0);
+        dbg_phase_a_filter   : out std_logic_vector(7 downto 0);
+        dbg_phase_b_filter   : out std_logic_vector(7 downto 0);
+        dbg_phase_a_exe      : out std_logic;
+        dbg_phase_b_exe      : out std_logic;
+        dbg_count_enc_enable : out std_logic;
+        dbg_cnt_enc_local    : out std_logic_vector(31 downto 0)
     );
     end component;
 
@@ -226,6 +233,22 @@ ARCHITECTURE behavior OF servo_enc_v1_0 is
     );
     end component;
 
+    component ila_0
+      port (
+        clk    : in std_logic;
+        probe0 : in std_logic_vector(0 downto 0);
+        probe1 : in std_logic_vector(0 downto 0);
+        probe2 : in std_logic_vector(3 downto 0);
+        probe3 : in std_logic_vector(3 downto 0);
+        probe4 : in std_logic_vector(7 downto 0);
+        probe5 : in std_logic_vector(7 downto 0);
+        probe6 : in std_logic_vector(0 downto 0);
+        probe7 : in std_logic_vector(0 downto 0);
+        probe8 : in std_logic_vector(0 downto 0);
+        probe9 : in std_logic_vector(31 downto 0)
+      );
+    end component;
+
     signal o_sd_out_lo              : std_logic_vector(15 downto 0);
     signal o_bus_oe_lo              : std_logic;
     signal soft_reset_lo            : std_logic;
@@ -233,7 +256,7 @@ ARCHITECTURE behavior OF servo_enc_v1_0 is
     signal counter_data_lo          : ar_32bit_6ea;
     signal counter_config_lo        : ar_16bit_6ea;
     signal counter_status_lo        : ar_16bit_6ea;
-    signal counter_load_exe_lo      : std_logic_vector(5 downto 0);        -- counter load exexcution
+    signal counter_load_exe_lo      : std_logic_vector(5 downto 0);
     signal delta_sigma_config_lo    : ar_16bit_6ea;
     signal delta_sigma_status_lo    : ar_16bit_6ea;
     signal delta_sigma_data_lo      : ar_32bit_6ea;
@@ -247,54 +270,89 @@ ARCHITECTURE behavior OF servo_enc_v1_0 is
     signal servo_io_out_lo          : std_logic_vector(15 downto 0);
     signal counter_config1_lo       : ar_16bit_3ea;
     signal counter_config2_lo       : ar_16bit_3ea;
-    signal counter_data1_lo : ar_32bit_3ea;
-    signal counter_data2_lo : ar_32bit_3ea;   
-    
-    signal counter_status1_lo : ar_16bit_3ea;    
-    signal counter_status2_lo : ar_16bit_3ea;     
+    signal counter_data1_lo         : ar_32bit_3ea;
+    signal counter_data2_lo         : ar_32bit_3ea;
 
-    signal counter_enc1_en_lo     : std_logic_vector(2 downto 0);
-    signal counter_enc1_dir_lo    : std_logic_vector(2 downto 0);
-    signal counter_enc2_en_lo     : std_logic_vector(2 downto 0);
-    signal counter_enc2_dir_lo    : std_logic_vector(2 downto 0);
+    signal counter_status1_lo       : ar_16bit_3ea;
+    signal counter_status2_lo       : ar_16bit_3ea;
 
-    signal universal_config_lo    : ar_16bit_8ea;
-    signal universal_status_lo    : ar_16bit_8ea;
-        
-    signal clock_count_lo         : std_logic_vector(31 downto 0);
-    signal clock_led_lo           : std_logic;
-    
-    signal u2_enc_filter : std_logic_vector(3 downto 0); -- 임시 신호 추가
-    
+    signal counter_enc1_en_lo       : std_logic_vector(2 downto 0);
+    signal counter_enc1_dir_lo      : std_logic_vector(2 downto 0);
+    signal counter_enc2_en_lo       : std_logic_vector(2 downto 0);
+    signal counter_enc2_dir_lo      : std_logic_vector(2 downto 0);
+
+    signal universal_config_lo      : ar_16bit_8ea;
+    signal universal_status_lo      : ar_16bit_8ea;
+
+    signal clock_count_lo           : std_logic_vector(31 downto 0);
+    signal clock_led_lo             : std_logic;
+
+    signal u1_enc_filter            : std_logic_vector(3 downto 0);
+    signal u2_enc_filter            : std_logic_vector(3 downto 0);
+
+    signal u1_dbg_phase_a_tmp       : std_logic_vector(3 downto 0);
+    signal u1_dbg_phase_b_tmp       : std_logic_vector(3 downto 0);
+    signal u1_dbg_phase_a_filter    : std_logic_vector(7 downto 0);
+    signal u1_dbg_phase_b_filter    : std_logic_vector(7 downto 0);
+    signal u1_dbg_phase_a_exe       : std_logic;
+    signal u1_dbg_phase_b_exe       : std_logic;
+    signal u1_dbg_count_enc_enable  : std_logic;
+    signal u1_dbg_cnt_enc_local     : std_logic_vector(31 downto 0);
+
+    signal ila_probe0               : std_logic_vector(0 downto 0);
+    signal ila_probe1               : std_logic_vector(0 downto 0);
+    signal ila_probe6               : std_logic_vector(0 downto 0);
+    signal ila_probe7               : std_logic_vector(0 downto 0);
+    signal ila_probe8               : std_logic_vector(0 downto 0);
+
 BEGIN
 
-    gpio_in_lo <= X"0030";
---    gpio_in_lo   <= X"000" & gp_in;
+    gpio_in_lo   <= X"0030";
+--  gpio_in_lo   <= X"000" & gp_in;
     gp_out       <= gpio_out_lo(3 downto 0);
-    status_led   <=  clock_led_lo & o_bus_oe_lo & counter_enc2_en_lo(0) & counter_enc1_en_lo(0);
+    status_led   <= clock_led_lo & o_bus_oe_lo & counter_enc2_en_lo(0) & counter_enc1_en_lo(0);
     fmc_waitn    <= '1';
-    fmc_db      <= o_sd_out_lo when o_bus_oe_lo = '1' else (others => 'Z');
+    fmc_db       <= o_sd_out_lo when o_bus_oe_lo = '1' else (others => 'Z');
+
+    ila_probe0(0) <= enc_a_cnt1;
+    ila_probe1(0) <= enc_b_cnt1;
+    ila_probe6(0) <= u1_dbg_phase_a_exe;
+    ila_probe7(0) <= u1_dbg_phase_b_exe;
+    ila_probe8(0) <= u1_dbg_count_enc_enable;
+
+    U_ILA_0 : ila_0
+      port map (
+        clk    => fpga_clk,
+        probe0 => ila_probe0,
+        probe1 => ila_probe1,
+        probe2 => u1_dbg_phase_a_tmp,
+        probe3 => u1_dbg_phase_b_tmp,
+        probe4 => u1_dbg_phase_a_filter,
+        probe5 => u1_dbg_phase_b_filter,
+        probe6 => ila_probe6,
+        probe7 => ila_probe7,
+        probe8 => ila_probe8,
+        probe9 => u1_dbg_cnt_enc_local
+      );
 
     process(fpga_clk, iresetn) begin
         if iresetn = '0' then
-            clock_count_lo  <= (others => '0');         
-            clock_led_lo    <= '0';           
+            clock_count_lo  <= (others => '0');
+            clock_led_lo    <= '0';
         elsif rising_edge(fpga_clk) then
-            if clock_count_lo = x"01E847FF" then    -- 0.5 sec with FPGA clock(64MHz)
+            if clock_count_lo = x"01E847FF" then
                 clock_count_lo  <= (others => '0');
                 clock_led_lo    <= not clock_led_lo;
             else
-                clock_count_lo  <= clock_count_lo + 1;  
+                clock_count_lo  <= clock_count_lo + 1;
             end if;
         end if;
     end process;
 
-
-
-    U_emif_con : emif_con 
+    U_emif_con : emif_con
     port map(
         ireset                      => iresetn,
-        iclk                        => fpga_clk, 
+        iclk                        => fpga_clk,
         ics                         => fmc_csn,
         iwr                         => fmc_wrn,
         ird                         => fmc_rdn,
@@ -303,28 +361,21 @@ BEGIN
         o_sd_out                    => o_sd_out_lo,
         o_bus_oe                    => o_bus_oe_lo,
 
-
         soft_reset                  => soft_reset_lo,
         command_load_data           => command_load_data_lo,
 
-        -- general purpose status and configure data --------------------------
         encoder_data                => counter_data_lo,
         counter_config              => counter_config_lo,
         counter_status              => counter_status_lo,
         counter_load_exe            => counter_load_exe_lo,
-        -----------------------------------------------------------------------
 
-        -- general purpose status and configure data --------------------------
         delta_sigma_config          => delta_sigma_config_lo,
         delta_sigma_status          => delta_sigma_status_lo,
         delta_sigma_data            => delta_sigma_data_lo,
-        -----------------------------------------------------------------------
 
-        -- general purpose status and configure data --------------------------
         spi_config                  => spi_config_lo,
         spi_status                  => spi_status_lo,
         spi_data                    => spi_data_lo,
-        -----------------------------------------------------------------------
 
         universal_config            => open,
         universal_status            => universal_status_lo,
@@ -332,18 +383,20 @@ BEGIN
         gpio_in                     => gpio_in_lo,
         gpio_out                    => gpio_out_lo,
         servo_io_in                 => servo_io_in_lo,
-        servo_io_out                => servo_io_out_lo        
+        servo_io_out                => servo_io_out_lo
     );
 
+    mechanical_status_lo(1) <= "000000" & counter_enc1_en_lo & counter_enc1_dir_lo & u1_enc_filter;
     mechanical_status_lo(2) <= "000000" & counter_enc2_en_lo & counter_enc2_dir_lo & u2_enc_filter;
+    mechanical_status_lo(3) <= (others => '0');
+    mechanical_status_lo(4) <= (others => '0');
 
-    
     counter_status_lo(1) <= counter_status1_lo(1);
     counter_status_lo(2) <= counter_status1_lo(2);
     counter_status_lo(3) <= counter_status1_lo(3);
     counter_status_lo(4) <= counter_status2_lo(1);
     counter_status_lo(5) <= counter_status2_lo(2);
-    counter_status_lo(6) <= counter_status2_lo(3);                
+    counter_status_lo(6) <= counter_status2_lo(3);
 
     counter_data_lo(1) <= counter_data1_lo(1);
     counter_data_lo(2) <= counter_data1_lo(2);
@@ -351,85 +404,103 @@ BEGIN
     counter_data_lo(4) <= counter_data2_lo(1);
     counter_data_lo(5) <= counter_data2_lo(2);
     counter_data_lo(6) <= counter_data2_lo(3);
-    
+
     counter_config1_lo(1) <= counter_config_lo(1);
     counter_config1_lo(2) <= counter_config_lo(2);
     counter_config1_lo(3) <= counter_config_lo(3);
     counter_config2_lo(1) <= counter_config_lo(4);
     counter_config2_lo(2) <= counter_config_lo(5);
-    counter_config2_lo(3) <= counter_config_lo(6);    
-        
-    U1_servo_encoder_con : servo_encoder_con 
+    counter_config2_lo(3) <= counter_config_lo(6);
+
+    U1_servo_encoder_con : servo_encoder_con
     port map(
-        reset              => iresetn,
-        clk                => fpga_clk,
-        soft_reset         => soft_reset_lo,
+        reset                => iresetn,
+        clk                  => fpga_clk,
+        soft_reset           => soft_reset_lo,
 
-        enc_a              => enc_a_cnt1,  
-        enc_b              => enc_b_cnt1,  
-        enc_c              => enc_c_cnt1,  
-        hall_w             => hall_w_cnt1, 
+        enc_a                => enc_a_cnt1,
+        enc_b                => enc_b_cnt1,
+        enc_c                => enc_c_cnt1,
+        hall_w               => hall_w_cnt1,
 
-        enc_a_filtered => u2_enc_filter(0),
-        enc_b_filtered => u2_enc_filter(1),
-        enc_c_filtered => u2_enc_filter(2),
-        hall_w_filtered => u2_enc_filter(3),
+        enc_a_filtered       => u1_enc_filter(0),
+        enc_b_filtered       => u1_enc_filter(1),
+        enc_c_filtered       => u1_enc_filter(2),
+        hall_w_filtered      => u1_enc_filter(3),
 
-        uart_rx_cnt1_1     => uart_rx_cnt1_1,
-        uart_tx_cnt1_1     => uart_tx_cnt1_1,
-        uart_dir_cnt1_1    => uart_dir_cnt1_1,
-                                              
-        uart_rx_cnt1_2     => uart_rx_cnt1_2,
-        uart_tx_cnt1_2     => uart_tx_cnt1_2,
-        uart_dir_cnt1_2    => uart_dir_cnt1_2,
+        uart_rx_cnt1_1       => uart_rx_cnt1_1,
+        uart_tx_cnt1_1       => uart_tx_cnt1_1,
+        uart_dir_cnt1_1      => uart_dir_cnt1_1,
 
-        counter_load_enc   => counter_load_exe_lo(2 downto 0),
-        counter_load_data  => command_load_data_lo,
+        uart_rx_cnt1_2       => uart_rx_cnt1_2,
+        uart_tx_cnt1_2       => uart_tx_cnt1_2,
+        uart_dir_cnt1_2      => uart_dir_cnt1_2,
 
-        counter_config     => counter_config1_lo,
+        counter_load_enc     => counter_load_exe_lo(2 downto 0),
+        counter_load_data    => command_load_data_lo,
 
-        counter_status     => counter_status1_lo,
-        counter_data       => counter_data1_lo,          
-        counter_enc_en     => counter_enc1_en_lo,
-        counter_enc_dir    => counter_enc1_dir_lo
+        counter_config       => counter_config1_lo,
+
+        counter_status       => counter_status1_lo,
+        counter_data         => counter_data1_lo,
+        counter_enc_en       => counter_enc1_en_lo,
+        counter_enc_dir      => counter_enc1_dir_lo,
+
+        dbg_phase_a_tmp      => u1_dbg_phase_a_tmp,
+        dbg_phase_b_tmp      => u1_dbg_phase_b_tmp,
+        dbg_phase_a_filter   => u1_dbg_phase_a_filter,
+        dbg_phase_b_filter   => u1_dbg_phase_b_filter,
+        dbg_phase_a_exe      => u1_dbg_phase_a_exe,
+        dbg_phase_b_exe      => u1_dbg_phase_b_exe,
+        dbg_count_enc_enable => u1_dbg_count_enc_enable,
+        dbg_cnt_enc_local    => u1_dbg_cnt_enc_local
     );
 
-    U2_servo_encoder_con : servo_encoder_con 
+    U2_servo_encoder_con : servo_encoder_con
     port map(
-        reset              => iresetn,
-        clk                => fpga_clk,
-        soft_reset         => soft_reset_lo,
+        reset                => iresetn,
+        clk                  => fpga_clk,
+        soft_reset           => soft_reset_lo,
 
-        enc_a              => enc_a_cnt2,  
-        enc_b              => enc_b_cnt2,  
-        enc_c              => enc_c_cnt2,  
-        hall_w             => hall_w_cnt2, 
+        enc_a                => enc_a_cnt2,
+        enc_b                => enc_b_cnt2,
+        enc_c                => enc_c_cnt2,
+        hall_w               => hall_w_cnt2,
 
-        enc_a_filtered     => mechanical_status_lo(2)(0),
-        enc_b_filtered     => mechanical_status_lo(2)(1),
-        enc_c_filtered     => mechanical_status_lo(2)(2),
-        hall_w_filtered    => mechanical_status_lo(2)(3),
+        enc_a_filtered       => u2_enc_filter(0),
+        enc_b_filtered       => u2_enc_filter(1),
+        enc_c_filtered       => u2_enc_filter(2),
+        hall_w_filtered      => u2_enc_filter(3),
 
-        uart_rx_cnt1_1     => uart_rx_cnt2_1,
-        uart_tx_cnt1_1     => uart_tx_cnt2_1,
-        uart_dir_cnt1_1    => uart_dir_cnt2_1,
-                                              
-        uart_rx_cnt1_2     => uart_rx_cnt2_2,
-        uart_tx_cnt1_2     => uart_tx_cnt2_2,
-        uart_dir_cnt1_2    => uart_dir_cnt2_2,
+        uart_rx_cnt1_1       => uart_rx_cnt2_1,
+        uart_tx_cnt1_1       => uart_tx_cnt2_1,
+        uart_dir_cnt1_1      => uart_dir_cnt2_1,
 
-        counter_load_enc   => counter_load_exe_lo(5 downto 3),
-        counter_load_data  => command_load_data_lo,
+        uart_rx_cnt1_2       => uart_rx_cnt2_2,
+        uart_tx_cnt1_2       => uart_tx_cnt2_2,
+        uart_dir_cnt1_2      => uart_dir_cnt2_2,
 
-        counter_config     => counter_config2_lo,
+        counter_load_enc     => counter_load_exe_lo(5 downto 3),
+        counter_load_data    => command_load_data_lo,
 
-        counter_status     => counter_status2_lo,
-        counter_data       => counter_data2_lo,          
-        counter_enc_en     => counter_enc2_en_lo,
-        counter_enc_dir    => counter_enc2_dir_lo
+        counter_config       => counter_config2_lo,
+
+        counter_status       => counter_status2_lo,
+        counter_data         => counter_data2_lo,
+        counter_enc_en       => counter_enc2_en_lo,
+        counter_enc_dir      => counter_enc2_dir_lo,
+
+        dbg_phase_a_tmp      => open,
+        dbg_phase_b_tmp      => open,
+        dbg_phase_a_filter   => open,
+        dbg_phase_b_filter   => open,
+        dbg_phase_a_exe      => open,
+        dbg_phase_b_exe      => open,
+        dbg_count_enc_enable => open,
+        dbg_cnt_enc_local    => open
     );
-    
-        universal_status_lo  <= (others => (others => '0'));
+
+    universal_status_lo <= (others => (others => '0'));
 
 delta_sigma_mapping : for j in 1 to 6 generate
 
@@ -439,16 +510,12 @@ delta_sigma_mapping : for j in 1 to 6 generate
         clk                => fpga_clk,
         soft_reset         => soft_reset_lo,
 
-    ---- Delta Sigma  group2 -------------------------------------------------------
-        ds_clk_out         => ds_clk_out(j),             
+        ds_clk_out         => ds_clk_out(j),
         ds_data_in         => ds_data_in(j),
-    --------------------------------------------------------------------------------
 
-     -- general purpose status and configure data --------------------------
         delta_sigma_config => delta_sigma_config_lo(j),
-        delta_sigma_status => delta_sigma_status_lo(j), 
-        delta_sigma_data   => delta_sigma_data_lo(j)   
-     -----------------------------------------------------------------------
+        delta_sigma_status => delta_sigma_status_lo(j),
+        delta_sigma_data   => delta_sigma_data_lo(j)
     );
 end generate delta_sigma_mapping;
 
@@ -457,11 +524,11 @@ signal_shaper : process(iresetn, fpga_clk) begin
         servo_io_in_lo  <= (others => '0');
         pwm_buffer_con  <= '0';
         fan_enable      <= '0';
-        regen_brake     <= '0'; 
+        regen_brake     <= '0';
         rdy_rly         <= '0';
         dbr_rly         <= '0';
     elsif rising_edge(fpga_clk) then
-        servo_io_in_lo  <= ( 0 => fdm, 1 => sto1, 2 => sto2, 3 => ipm_fault, 4 => power_fault, 5 => fan_status, others => '0'); 
+        servo_io_in_lo  <= (0 => fdm, 1 => sto1, 2 => sto2, 3 => ipm_fault, 4 => power_fault, 5 => fan_status, others => '0');
         pwm_buffer_con  <= servo_io_out_lo(0);
         fan_enable      <= servo_io_out_lo(1);
         regen_brake     <= servo_io_out_lo(2);
@@ -470,21 +537,22 @@ signal_shaper : process(iresetn, fpga_clk) begin
     end if;
 end process signal_shaper;
 
-    spi_data_lo(31 downto 16) <= (others => '0');              
+    spi_data_lo(31 downto 16) <= (others => '0');
     spi_status_lo(15 downto 1) <= (others => '0');
-    U_spi_master : spi_master 
+
+    U_spi_master : spi_master
       port map(
         reset   => iresetn,
         clk     => fpga_clk,
         enable  => spi_config_lo(0),
-    
+
         mosi    => ntc_sdo,
         miso    => ntc_sdi,
         sclk    => ntc_sclk,
         ss_n    => ntc_csn,
 
         busy    => spi_status_lo(0),
-        rx_data => spi_data_lo(15 downto 0)              
+        rx_data => spi_data_lo(15 downto 0)
     );
 
 END behavior;

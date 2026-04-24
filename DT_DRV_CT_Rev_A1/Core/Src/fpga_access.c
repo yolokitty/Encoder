@@ -6,7 +6,6 @@
  */
 #include "fpga_access.h"
 
-
 void WriteRegData32(uint16_t usIndex, uint32_t ulData)
 {
     volatile uint16_t usTemp;
@@ -24,9 +23,9 @@ void WriteRegData32(uint16_t usIndex, uint32_t ulData)
         usTemp = *(volatile uint16_t*)ADDR_MSB_WR_PORT_DATA;
 
     *(volatile uint16_t*)ADDR_WR_CMD_PORT = (uint16_t)usIndex;
-    usTemp = *(volatile uint16_t*)((uint32_t)ADDR_WR_CMD_PORT);
+    usTemp = *(volatile uint16_t*)ADDR_WR_CMD_PORT;
     if(usTemp != (uint16_t)usIndex)
-        usTemp = *(volatile uint16_t*)(ADDR_WR_CMD_PORT);
+        usTemp = *(volatile uint16_t*)ADDR_WR_CMD_PORT;
 
     __DSB();
     __NOP(); __NOP(); __NOP(); __NOP();
@@ -52,7 +51,6 @@ uint32_t ReadRegData32(uint16_t usIndex)
     return ulReturnData;
 }
 
-
 uint32_t StatusSet_ActualPosition(uint8_t usChNo, int32_t ActPos)
 {
     WriteRegData32(CMD_INDEX_COUNTER_DATA(usChNo), (uint32_t)ActPos);
@@ -67,10 +65,15 @@ uint32_t StatusGet_ActualPosition(uint8_t usChNo, int32_t *pActPos)
     return DRV_CT_RT_SUCCESS;
 }
 
-//uint32_t StatusGet_ActualPosition(uint8_t usChNo, int32_t *pActPos)
-//{
-//
-//   *pActPos = ReadRegData32(CMD_INDEX_COUNTER_DATA(usChNo));
-//    return DRV_CT_RT_SUCCESS;
-//}
+uint16_t ReadVendorId16(void)
+{
+    return *(volatile uint16_t*)ADDR_VENDOR_ID;
+}
 
+/*
+uint32_t StatusGet_ActualPosition(uint8_t usChNo, int32_t *pActPos)
+{
+    *pActPos = ReadRegData32(CMD_INDEX_COUNTER_DATA(usChNo));
+    return DRV_CT_RT_SUCCESS;
+}
+*/

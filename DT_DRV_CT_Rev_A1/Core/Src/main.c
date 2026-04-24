@@ -1,4 +1,3 @@
-
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 
@@ -41,6 +40,16 @@ volatile uint32_t g_hfsr  = 0;
 volatile uint32_t g_cfsr  = 0;
 volatile uint32_t g_mmfar = 0;
 volatile uint32_t g_bfar  = 0;
+volatile uint32_t g_abfsr = 0;
+
+volatile uint32_t g_fault_r0  = 0;
+volatile uint32_t g_fault_r1  = 0;
+volatile uint32_t g_fault_r2  = 0;
+volatile uint32_t g_fault_r3  = 0;
+volatile uint32_t g_fault_r12 = 0;
+volatile uint32_t g_fault_lr  = 0;
+volatile uint32_t g_fault_pc  = 0;
+volatile uint32_t g_fault_psr = 0;
 
 /* USER CODE END PV */
 
@@ -108,13 +117,13 @@ int main(void)
 
   while(retry < 10)
   {
-      *(volatile uint16_t*)ADDR_COUNTER_CONFIG(0) = 0x0330;  // 필터값 포함
+      *(volatile uint16_t*)ADDR_COUNTER_CONFIG(0) = 0x0830;  // 필터값 포함
 
       nStartTick = HAL_GetTick();
       while((HAL_GetTick() - nStartTick) < 10);
 
       verify = *(volatile uint16_t*)ADDR_COUNTER_CONFIG(0);
-      if(verify == 0x0330)
+      if(verify == 0x0830)
           break;
       retry++;
   }
@@ -166,6 +175,7 @@ int main(void)
 	  ulWritePrev = ulWriteData;
 #else
 	  StatusGet_ActualPosition(0, &gActPosition);
+//	  g_val3 = ReadVendorId16();
 #endif
     /* USER CODE END WHILE */
 
@@ -189,6 +199,7 @@ void SystemClock_Config(void)
 
   /** Configure the main internal regulator output voltage
   */
+  __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE0);
 
   while(!__HAL_PWR_GET_FLAG(PWR_FLAG_VOSRDY)) {}
 
@@ -225,7 +236,7 @@ void SystemClock_Config(void)
   RCC_ClkInitStruct.APB2CLKDivider = RCC_APB2_DIV1;
   RCC_ClkInitStruct.APB4CLKDivider = RCC_APB4_DIV1;
 
-  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_0) != HAL_OK)
+  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_4) != HAL_OK)
   {
     Error_Handler();
   }
@@ -401,16 +412,13 @@ static void MX_GPIO_Init(void)
 /* USER CODE END 4 */
 
 /* MPU Configuration */
-
-
 void MPU_Config(void)
 {
-
   /* Disables the MPU */
   HAL_MPU_Disable();
+
   /* Enables the MPU */
   HAL_MPU_Enable(MPU_HFNMI_PRIVDEF);
-
 }
 
 /**
@@ -420,7 +428,6 @@ void MPU_Config(void)
 void Error_Handler(void)
 {
   /* USER CODE BEGIN Error_Handler_Debug */
-  /* User can add his own implementation to report the HAL error return state */
   __disable_irq();
   while (1)
   {

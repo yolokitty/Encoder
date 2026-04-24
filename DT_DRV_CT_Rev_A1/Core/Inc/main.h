@@ -35,24 +35,34 @@ extern "C" {
 
 /* Exported types ------------------------------------------------------------*/
 /* USER CODE BEGIN ET */
-
 /* USER CODE END ET */
 
 /* Exported constants --------------------------------------------------------*/
 /* USER CODE BEGIN EC */
-
 /* USER CODE END EC */
 
 /* Exported macro ------------------------------------------------------------*/
 /* USER CODE BEGIN EM */
-
 /* USER CODE END EM */
 
 /* Exported functions prototypes ---------------------------------------------*/
 void Error_Handler(void);
 
 /* USER CODE BEGIN EFP */
+extern volatile uint32_t g_hfsr;
+extern volatile uint32_t g_cfsr;
+extern volatile uint32_t g_mmfar;
+extern volatile uint32_t g_bfar;
+extern volatile uint32_t g_abfsr;
 
+extern volatile uint32_t g_fault_r0;
+extern volatile uint32_t g_fault_r1;
+extern volatile uint32_t g_fault_r2;
+extern volatile uint32_t g_fault_r3;
+extern volatile uint32_t g_fault_r12;
+extern volatile uint32_t g_fault_lr;
+extern volatile uint32_t g_fault_pc;
+extern volatile uint32_t g_fault_psr;
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
@@ -70,7 +80,6 @@ void Error_Handler(void);
 #define FPGA_RESETn_GPIO_Port GPIOF
 
 /* USER CODE BEGIN Private defines */
-
 /* USER CODE END Private defines */
 
 #ifdef __cplusplus

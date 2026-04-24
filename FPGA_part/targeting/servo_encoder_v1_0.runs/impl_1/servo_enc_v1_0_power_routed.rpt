@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2025.2 (win64) Build 6299465 Fri Nov 14 19:35:11 GMT 2025
-| Date             : Mon Apr 20 17:16:11 2026
+| Date             : Fri Apr 24 10:05:23 2026
 | Host             : DESKTOP-GNEDNNB running 64-bit major release  (build 9200)
 | Command          : report_power -file servo_enc_v1_0_power_routed.rpt -pb servo_enc_v1_0_power_summary_routed.pb -rpx servo_enc_v1_0_power_routed.rpx
 | Design           : servo_enc_v1_0
@@ -30,10 +30,10 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.062        |
+| Total On-Chip Power (W)  | 0.071        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.043        |
+| Dynamic (W)              | 0.051        |
 | Device Static (W)        | 0.020        |
 | Effective TJA (C/W)      | 3.4          |
 | Max Ambient (C)          | 84.8         |
@@ -49,21 +49,24 @@ Table of Contents
 1.1 On-Chip Components
 ----------------------
 
-+----------------+-----------+----------+-----------+-----------------+
-| On-Chip        | Power (W) | Used     | Available | Utilization (%) |
-+----------------+-----------+----------+-----------+-----------------+
-| Clocks         |     0.007 |        3 |       --- |             --- |
-| Slice Logic    |     0.011 |     7593 |       --- |             --- |
-|   LUT as Logic |     0.009 |     2992 |      8000 |           37.40 |
-|   CARRY4       |     0.001 |      353 |      2000 |           17.65 |
-|   Register     |    <0.001 |     3368 |     16000 |           21.05 |
-|   F7/F8 Muxes  |    <0.001 |       21 |      8000 |            0.26 |
-|   Others       |     0.000 |       31 |       --- |             --- |
-| Signals        |     0.009 |     5613 |       --- |             --- |
-| I/O            |     0.017 |       85 |       100 |           85.00 |
-| Static Power   |     0.020 |          |           |                 |
-| Total          |     0.062 |          |           |                 |
-+----------------+-----------+----------+-----------+-----------------+
++--------------------------+-----------+----------+-----------+-----------------+
+| On-Chip                  | Power (W) | Used     | Available | Utilization (%) |
++--------------------------+-----------+----------+-----------+-----------------+
+| Clocks                   |     0.012 |        4 |       --- |             --- |
+| Slice Logic              |     0.012 |    12493 |       --- |             --- |
+|   LUT as Logic           |     0.010 |     4286 |      8000 |           53.58 |
+|   CARRY4                 |     0.001 |      400 |      2000 |           20.00 |
+|   Register               |    <0.001 |     5993 |     16000 |           37.46 |
+|   LUT as Shift Register  |    <0.001 |      153 |      2400 |            6.38 |
+|   LUT as Distributed RAM |    <0.001 |       24 |      2400 |            1.00 |
+|   F7/F8 Muxes            |    <0.001 |       20 |      8000 |            0.25 |
+|   Others                 |     0.000 |      336 |       --- |             --- |
+| Signals                  |     0.010 |     9151 |       --- |             --- |
+| Block RAM                |    <0.001 |        2 |        10 |           20.00 |
+| I/O                      |     0.017 |       85 |       100 |           85.00 |
+| Static Power             |     0.020 |          |           |                 |
+| Total                    |     0.071 |          |           |                 |
++--------------------------+-----------+----------+-----------+-----------------+
 
 
 1.2 Power Supply Summary
@@ -72,7 +75,7 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) | Powerup (A) | Budget (A)  | Margin (A) |
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
-| Vccint    |       1.000 |     0.030 |       0.026 |      0.004 |       NA    | Unspecified | NA         |
+| Vccint    |       1.000 |     0.038 |       0.034 |      0.004 |       NA    | Unspecified | NA         |
 | Vccaux    |       1.800 |     0.008 |       0.001 |      0.007 |       NA    | Unspecified | NA         |
 | Vcco33    |       3.300 |     0.006 |       0.005 |      0.001 |       NA    | Unspecified | NA         |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
@@ -123,11 +126,12 @@ Table of Contents
 2.2 Clock Constraints
 ---------------------
 
-+----------+----------+-----------------+
-| Clock    | Domain   | Constraint (ns) |
-+----------+----------+-----------------+
-| fpge_clk | fpga_clk |            15.6 |
-+----------+----------+-----------------+
++--------------------------------------------------------------------------------------------+-------------------------------------------------------------------+-----------------+
+| Clock                                                                                      | Domain                                                            | Constraint (ns) |
++--------------------------------------------------------------------------------------------+-------------------------------------------------------------------+-----------------+
+| dbg_hub/inst/BSCANID.u_xsdbm_id/SWITCH_N_EXT_BSCAN.bscan_inst/SERIES7_BSCAN.bscan_inst/TCK | dbg_hub/inst/BSCANID.u_xsdbm_id/SWITCH_N_EXT_BSCAN.bscan_inst/TCK |            33.0 |
+| fpge_clk                                                                                   | fpga_clk                                                          |            15.6 |
++--------------------------------------------------------------------------------------------+-------------------------------------------------------------------+-----------------+
 
 
 3. Detailed Reports
@@ -139,14 +143,20 @@ Table of Contents
 +----------------------------------------+-----------+
 | Name                                   | Power (W) |
 +----------------------------------------+-----------+
-| servo_enc_v1_0                         |     0.043 |
+| servo_enc_v1_0                         |     0.051 |
 |   U1_servo_encoder_con                 |     0.003 |
 |     U_tamakawa_interface1              |     0.001 |
 |     U_tamakawa_interface2              |     0.001 |
 |   U2_servo_encoder_con                 |     0.003 |
 |     U_tamakawa_interface1              |     0.001 |
 |     U_tamakawa_interface2              |     0.001 |
-|   U_emif_con                           |     0.003 |
+|   U_ILA_0                              |     0.006 |
+|     U0                                 |     0.006 |
+|       ila_core_inst                    |     0.006 |
+|   U_emif_con                           |     0.004 |
+|   dbg_hub                              |     0.002 |
+|     inst                               |     0.002 |
+|       BSCANID.u_xsdbm_id               |     0.002 |
 |   delta_sigma_mapping[1].U_delta_sigma |     0.003 |
 |   delta_sigma_mapping[2].U_delta_sigma |     0.003 |
 |   delta_sigma_mapping[3].U_delta_sigma |     0.003 |

@@ -8,12 +8,12 @@
   **** SW Build 6299465 on Fri Nov 14 19:35:11 GMT 2025
   **** IP Build 6300035 on Fri Nov 14 10:48:45 MST 2025
   **** SharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025
-  **** Start of session at: Mon Apr 20 17:13:40 2026
+  **** Start of session at: Fri Apr 24 10:02:38 2026
     ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
     ** Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 
 source servo_enc_v1_0.tcl -notrace
-create_project: Time (s): cpu = 00:00:07 ; elapsed = 00:00:05 . Memory (MB): peak = 533.512 ; gain = 220.422
+create_project: Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 536.664 ; gain = 221.527
 Command: read_checkpoint -auto_incremental -incremental C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/targeting/servo_encoder_v1_0.srcs/utils_1/imports/synth_1/servo_enc_v1_0.dcp
 INFO: [Vivado 12-5825] Read reference checkpoint from C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/targeting/servo_encoder_v1_0.srcs/utils_1/imports/synth_1/servo_enc_v1_0.dcp for incremental synthesis
 INFO: [Vivado 12-7989] Please ensure there are no constraint changes
@@ -26,36 +26,38 @@ INFO: [Designutils 20-5440] No compile time benefit to using incremental synthes
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 21280
+INFO: [Synth 8-7075] Helper process launched with PID 29700
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 1232.820 ; gain = 539.410
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:05 . Memory (MB): peak = 1265.836 ; gain = 540.055
 ---------------------------------------------------------------------------------
-WARNING: [Synth 8-9112] actual for formal port 'i_sa' is neither a static name nor a globally static expression [C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/servo_enc_v1_0.vhd:301]
-INFO: [Synth 8-638] synthesizing module 'servo_enc_v1_0' [C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/servo_enc_v1_0.vhd:110]
-INFO: [Synth 8-3491] module 'emif_con' declared at 'C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/emif_con.vhd:17' bound to instance 'U_emif_con' of component 'emif_con' [C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/servo_enc_v1_0.vhd:294]
+WARNING: [Synth 8-9112] actual for formal port 'i_sa' is neither a static name nor a globally static expression [C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/servo_enc_v1_0.vhd:359]
+INFO: [Synth 8-638] synthesizing module 'servo_enc_v1_0' [C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/servo_enc_v1_0.vhd:109]
+INFO: [Synth 8-3491] module 'ila_0' declared at 'C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/targeting/servo_encoder_v1_0.runs/synth_1/.Xil/Vivado-24012-DESKTOP-GNEDNNB/realtime/ila_0_stub.vhdl:6' bound to instance 'U_ILA_0' of component 'ila_0' [C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/servo_enc_v1_0.vhd:323]
+INFO: [Synth 8-638] synthesizing module 'ila_0' [C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/targeting/servo_encoder_v1_0.runs/synth_1/.Xil/Vivado-24012-DESKTOP-GNEDNNB/realtime/ila_0_stub.vhdl:29]
+INFO: [Synth 8-3491] module 'emif_con' declared at 'C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/emif_con.vhd:17' bound to instance 'U_emif_con' of component 'emif_con' [C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/servo_enc_v1_0.vhd:352]
 INFO: [Synth 8-638] synthesizing module 'emif_con' [C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/emif_con.vhd:55]
 INFO: [Synth 8-256] done synthesizing module 'emif_con' (0#1) [C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/emif_con.vhd:55]
-INFO: [Synth 8-3491] module 'servo_encoder_con' declared at 'C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/servo_encoder_con.vhd:41' bound to instance 'U1_servo_encoder_con' of component 'servo_encoder_con' [C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/servo_enc_v1_0.vhd:362]
-INFO: [Synth 8-638] synthesizing module 'servo_encoder_con' [C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/servo_encoder_con.vhd:78]
-INFO: [Synth 8-3491] module 'tamakawa_interface' declared at 'C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/tamakawa_interface.vhd:45' bound to instance 'U_tamakawa_interface1' of component 'tamakawa_interface' [C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/servo_encoder_con.vhd:176]
+INFO: [Synth 8-3491] module 'servo_encoder_con' declared at 'C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/servo_encoder_con.vhd:41' bound to instance 'U1_servo_encoder_con' of component 'servo_encoder_con' [C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/servo_enc_v1_0.vhd:415]
+INFO: [Synth 8-638] synthesizing module 'servo_encoder_con' [C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/servo_encoder_con.vhd:87]
+INFO: [Synth 8-3491] module 'tamakawa_interface' declared at 'C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/tamakawa_interface.vhd:45' bound to instance 'U_tamakawa_interface1' of component 'tamakawa_interface' [C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/servo_encoder_con.vhd:194]
 INFO: [Synth 8-638] synthesizing module 'tamakawa_interface' [C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/tamakawa_interface.vhd:66]
 INFO: [Synth 8-256] done synthesizing module 'tamakawa_interface' (0#1) [C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/tamakawa_interface.vhd:66]
-INFO: [Synth 8-3491] module 'tamakawa_interface' declared at 'C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/tamakawa_interface.vhd:45' bound to instance 'U_tamakawa_interface2' of component 'tamakawa_interface' [C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/servo_encoder_con.vhd:197]
-INFO: [Synth 8-226] default block is never used [C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/servo_encoder_con.vhd:340]
-INFO: [Synth 8-256] done synthesizing module 'servo_encoder_con' (0#1) [C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/servo_encoder_con.vhd:78]
-INFO: [Synth 8-3491] module 'servo_encoder_con' declared at 'C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/servo_encoder_con.vhd:41' bound to instance 'U2_servo_encoder_con' of component 'servo_encoder_con' [C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/servo_enc_v1_0.vhd:397]
-INFO: [Synth 8-3491] module 'delta_sigma' declared at 'C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/delta_sigma.vhd:20' bound to instance 'U_delta_sigma' of component 'delta_sigma' [C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/servo_enc_v1_0.vhd:436]
+INFO: [Synth 8-3491] module 'tamakawa_interface' declared at 'C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/tamakawa_interface.vhd:45' bound to instance 'U_tamakawa_interface2' of component 'tamakawa_interface' [C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/servo_encoder_con.vhd:215]
+INFO: [Synth 8-226] default block is never used [C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/servo_encoder_con.vhd:355]
+INFO: [Synth 8-256] done synthesizing module 'servo_encoder_con' (0#1) [C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/servo_encoder_con.vhd:87]
+INFO: [Synth 8-3491] module 'servo_encoder_con' declared at 'C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/servo_encoder_con.vhd:41' bound to instance 'U2_servo_encoder_con' of component 'servo_encoder_con' [C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/servo_enc_v1_0.vhd:459]
+INFO: [Synth 8-3491] module 'delta_sigma' declared at 'C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/delta_sigma.vhd:20' bound to instance 'U_delta_sigma' of component 'delta_sigma' [C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/servo_enc_v1_0.vhd:507]
 INFO: [Synth 8-638] synthesizing module 'delta_sigma' [C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/delta_sigma.vhd:39]
 INFO: [Synth 8-256] done synthesizing module 'delta_sigma' (0#1) [C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/delta_sigma.vhd:39]
-INFO: [Synth 8-3491] module 'delta_sigma' declared at 'C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/delta_sigma.vhd:20' bound to instance 'U_delta_sigma' of component 'delta_sigma' [C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/servo_enc_v1_0.vhd:436]
-INFO: [Synth 8-3491] module 'delta_sigma' declared at 'C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/delta_sigma.vhd:20' bound to instance 'U_delta_sigma' of component 'delta_sigma' [C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/servo_enc_v1_0.vhd:436]
-INFO: [Synth 8-3491] module 'delta_sigma' declared at 'C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/delta_sigma.vhd:20' bound to instance 'U_delta_sigma' of component 'delta_sigma' [C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/servo_enc_v1_0.vhd:436]
-INFO: [Synth 8-3491] module 'delta_sigma' declared at 'C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/delta_sigma.vhd:20' bound to instance 'U_delta_sigma' of component 'delta_sigma' [C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/servo_enc_v1_0.vhd:436]
-INFO: [Synth 8-3491] module 'delta_sigma' declared at 'C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/delta_sigma.vhd:20' bound to instance 'U_delta_sigma' of component 'delta_sigma' [C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/servo_enc_v1_0.vhd:436]
-INFO: [Synth 8-3491] module 'spi_master' declared at 'C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/spi_master.vhd:18' bound to instance 'U_spi_master' of component 'spi_master' [C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/servo_enc_v1_0.vhd:475]
+INFO: [Synth 8-3491] module 'delta_sigma' declared at 'C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/delta_sigma.vhd:20' bound to instance 'U_delta_sigma' of component 'delta_sigma' [C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/servo_enc_v1_0.vhd:507]
+INFO: [Synth 8-3491] module 'delta_sigma' declared at 'C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/delta_sigma.vhd:20' bound to instance 'U_delta_sigma' of component 'delta_sigma' [C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/servo_enc_v1_0.vhd:507]
+INFO: [Synth 8-3491] module 'delta_sigma' declared at 'C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/delta_sigma.vhd:20' bound to instance 'U_delta_sigma' of component 'delta_sigma' [C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/servo_enc_v1_0.vhd:507]
+INFO: [Synth 8-3491] module 'delta_sigma' declared at 'C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/delta_sigma.vhd:20' bound to instance 'U_delta_sigma' of component 'delta_sigma' [C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/servo_enc_v1_0.vhd:507]
+INFO: [Synth 8-3491] module 'delta_sigma' declared at 'C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/delta_sigma.vhd:20' bound to instance 'U_delta_sigma' of component 'delta_sigma' [C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/servo_enc_v1_0.vhd:507]
+INFO: [Synth 8-3491] module 'spi_master' declared at 'C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/spi_master.vhd:18' bound to instance 'U_spi_master' of component 'spi_master' [C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/servo_enc_v1_0.vhd:543]
 INFO: [Synth 8-638] synthesizing module 'spi_master' [C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/spi_master.vhd:34]
 INFO: [Synth 8-256] done synthesizing module 'spi_master' (0#1) [C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/spi_master.vhd:34]
-INFO: [Synth 8-256] done synthesizing module 'servo_enc_v1_0' (0#1) [C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/servo_enc_v1_0.vhd:110]
+INFO: [Synth 8-256] done synthesizing module 'servo_enc_v1_0' (0#1) [C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/servo_enc_v1_0.vhd:109]
 WARNING: [Synth 8-6014] Unused sequential element tk_rx_data_reg[23] was removed.  [C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/tamakawa_interface.vhd:352]
 WARNING: [Synth 8-6014] Unused sequential element tk_rx_data_reg[22] was removed.  [C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/tamakawa_interface.vhd:352]
 WARNING: [Synth 8-6014] Unused sequential element tk_rx_data_reg[21] was removed.  [C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/tamakawa_interface.vhd:352]
@@ -78,9 +80,7 @@ WARNING: [Synth 8-6014] Unused sequential element tx_data_cnt_reg was removed.  
 WARNING: [Synth 8-6014] Unused sequential element rx_frame_error_cnt_reg was removed.  [C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/tamakawa_interface.vhd:366]
 WARNING: [Synth 8-6014] Unused sequential element crc_tx_reg was removed.  [C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/tamakawa_interface.vhd:559]
 WARNING: [Synth 8-6014] Unused sequential element crc_rx_reg was removed.  [C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/tamakawa_interface.vhd:560]
-WARNING: [Synth 8-3848] Net mechanical_status_lo[4] in module/entity servo_enc_v1_0 does not have driver. [C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/servo_enc_v1_0.vhd:243]
-WARNING: [Synth 8-3848] Net mechanical_status_lo[3] in module/entity servo_enc_v1_0 does not have driver. [C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/servo_enc_v1_0.vhd:243]
-WARNING: [Synth 8-3848] Net mechanical_status_lo[1] in module/entity servo_enc_v1_0 does not have driver. [C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/servo_enc_v1_0.vhd:243]
+INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'U1_servo_encoder_con'. This will prevent further optimization [C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/servo_enc_v1_0.vhd:415]
 WARNING: [Synth 8-3917] design servo_enc_v1_0 has port fmc_waitn driven by constant 1
 WARNING: [Synth 8-7129] Port ds_data_in in module delta_sigma is either unconnected or has no load
 WARNING: [Synth 8-7129] Port delta_sigma_config[7] in module delta_sigma is either unconnected or has no load
@@ -129,50 +129,54 @@ WARNING: [Synth 8-7129] Port gp_in[2] in module servo_enc_v1_0 is either unconne
 WARNING: [Synth 8-7129] Port gp_in[1] in module servo_enc_v1_0 is either unconnected or has no load
 WARNING: [Synth 8-7129] Port gp_in[0] in module servo_enc_v1_0 is either unconnected or has no load
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 1376.379 ; gain = 682.969
+Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 1414.188 ; gain = 688.406
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 1376.379 ; gain = 682.969
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 1414.188 ; gain = 688.406
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 1376.379 ; gain = 682.969
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 1414.188 ; gain = 688.406
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.060 . Memory (MB): peak = 1376.379 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.063 . Memory (MB): peak = 1414.188 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
 Initializing timing engine
+Parsing XDC File [c:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/targeting/servo_encoder_v1_0.gen/sources_1/ip/ila_0_1/ila_0/ila_1_in_context.xdc] for cell 'U_ILA_0'
+Finished Parsing XDC File [c:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/targeting/servo_encoder_v1_0.gen/sources_1/ip/ila_0_1/ila_0/ila_1_in_context.xdc] for cell 'U_ILA_0'
 Parsing XDC File [C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/servo_enc.xdc]
 Finished Parsing XDC File [C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/servo_enc.xdc]
 INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/servo_enc.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/servo_enc_v1_0_propImpl.xdc].
 Resolution: To avoid this warning, move constraints listed in [.Xil/servo_enc_v1_0_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Parsing XDC File [C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/targeting/servo_encoder_v1_0.runs/synth_1/dont_touch.xdc]
+Finished Parsing XDC File [C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/targeting/servo_encoder_v1_0.runs/synth_1/dont_touch.xdc]
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1450.664 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1484.086 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.047 . Memory (MB): peak = 1450.664 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.051 . Memory (MB): peak = 1484.086 ; gain = 0.000
 INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 1450.664 ; gain = 757.254
+Finished Constraint Validation : Time (s): cpu = 00:00:11 ; elapsed = 00:00:13 . Memory (MB): peak = 1484.086 ; gain = 758.305
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7s15ftgb196-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 1450.664 ; gain = 757.254
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:11 ; elapsed = 00:00:13 . Memory (MB): peak = 1484.086 ; gain = 758.305
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 1450.664 ; gain = 757.254
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:11 ; elapsed = 00:00:13 . Memory (MB): peak = 1484.086 ; gain = 758.305
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'tk_state_reg' in module 'tamakawa_interface'
 ---------------------------------------------------------------------------------------------------
@@ -199,7 +203,7 @@ INFO: [Synth 8-802] inferred FSM for state register 'tk_state_reg' in module 'ta
 INFO: [Synth 8-3354] encoded FSM with state register 'tk_state_reg' using encoding 'sequential' in module 'tamakawa_interface'
 WARNING: [Synth 8-327] inferring latch for variable 'mosi_reg' [C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/spi_master.vhd:67]
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 1450.664 ; gain = 757.254
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:13 ; elapsed = 00:00:15 . Memory (MB): peak = 1484.086 ; gain = 758.305
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -220,7 +224,7 @@ Detailed RTL Component Info :
 	   2 Input     16 Bit         XORs := 2     
 	   2 Input      1 Bit         XORs := 6     
 +---Registers : 
-	               32 Bit    Registers := 11    
+	               32 Bit    Registers := 17    
 	               25 Bit    Registers := 24    
 	               24 Bit    Registers := 8     
 	               16 Bit    Registers := 44    
@@ -231,7 +235,7 @@ Detailed RTL Component Info :
 	                5 Bit    Registers := 10    
 	                4 Bit    Registers := 25    
 	                3 Bit    Registers := 8     
-	                1 Bit    Registers := 130   
+	                1 Bit    Registers := 132   
 +---Muxes : 
 	   2 Input   32 Bit        Muxes := 7     
 	   3 Input   32 Bit        Muxes := 1     
@@ -313,25 +317,25 @@ WARNING: [Synth 8-7129] Port gp_in[1] in module servo_enc_v1_0 is either unconne
 WARNING: [Synth 8-7129] Port gp_in[0] in module servo_enc_v1_0 is either unconnected or has no load
 WARNING: [Synth 8-3332] Sequential element (mosi_reg) is unused and will be removed from module spi_master.
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:25 ; elapsed = 00:00:27 . Memory (MB): peak = 1517.340 ; gain = 823.930
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:24 ; elapsed = 00:00:27 . Memory (MB): peak = 1561.180 ; gain = 835.398
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:29 ; elapsed = 00:00:31 . Memory (MB): peak = 1587.109 ; gain = 893.699
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:28 ; elapsed = 00:00:31 . Memory (MB): peak = 1634.496 ; gain = 908.715
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:36 ; elapsed = 00:00:39 . Memory (MB): peak = 1718.750 ; gain = 1025.340
+Finished Timing Optimization : Time (s): cpu = 00:00:35 ; elapsed = 00:00:39 . Memory (MB): peak = 1760.945 ; gain = 1035.164
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:38 ; elapsed = 00:00:41 . Memory (MB): peak = 1736.836 ; gain = 1043.426
+Finished Technology Mapping : Time (s): cpu = 00:00:37 ; elapsed = 00:00:41 . Memory (MB): peak = 1768.973 ; gain = 1043.191
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -349,93 +353,95 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:43 ; elapsed = 00:00:46 . Memory (MB): peak = 1869.496 ; gain = 1176.086
+Finished IO Insertion : Time (s): cpu = 00:00:40 ; elapsed = 00:00:44 . Memory (MB): peak = 1917.047 ; gain = 1191.266
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:43 ; elapsed = 00:00:46 . Memory (MB): peak = 1869.496 ; gain = 1176.086
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:40 ; elapsed = 00:00:44 . Memory (MB): peak = 1917.047 ; gain = 1191.266
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:44 ; elapsed = 00:00:47 . Memory (MB): peak = 1869.496 ; gain = 1176.086
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:40 ; elapsed = 00:00:44 . Memory (MB): peak = 1917.047 ; gain = 1191.266
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:44 ; elapsed = 00:00:47 . Memory (MB): peak = 1869.496 ; gain = 1176.086
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:40 ; elapsed = 00:00:44 . Memory (MB): peak = 1917.047 ; gain = 1191.266
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:44 ; elapsed = 00:00:47 . Memory (MB): peak = 1869.496 ; gain = 1176.086
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:40 ; elapsed = 00:00:44 . Memory (MB): peak = 1917.047 ; gain = 1191.266
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:44 ; elapsed = 00:00:47 . Memory (MB): peak = 1869.496 ; gain = 1176.086
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:40 ; elapsed = 00:00:44 . Memory (MB): peak = 1917.047 ; gain = 1191.266
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
 ---------------------------------------------------------------------------------
 
 Report BlackBoxes: 
-+-+--------------+----------+
-| |BlackBox name |Instances |
-+-+--------------+----------+
-+-+--------------+----------+
++------+--------------+----------+
+|      |BlackBox name |Instances |
++------+--------------+----------+
+|1     |ila_0         |         1|
++------+--------------+----------+
 
 Report Cell Usage: 
-+------+-------+------+
-|      |Cell   |Count |
-+------+-------+------+
-|1     |BUFG   |     1|
-|2     |CARRY4 |   353|
-|3     |LUT1   |   196|
-|4     |LUT2   |  1095|
-|5     |LUT3   |   532|
-|6     |LUT4   |   514|
-|7     |LUT5   |   437|
-|8     |LUT6   |  1047|
-|9     |MUXF7  |    21|
-|10    |FDCE   |  2148|
-|11    |FDPE   |     4|
-|12    |FDRE   |  1208|
-|13    |FDSE   |     8|
-|14    |IBUF   |    38|
-|15    |IOBUF  |    16|
-|16    |OBUF   |    30|
-|17    |OBUFT  |     1|
-+------+-------+------+
++------+-----------+------+
+|      |Cell       |Count |
++------+-----------+------+
+|1     |ila_0_bbox |     1|
+|2     |BUFG       |     1|
+|3     |CARRY4     |   353|
+|4     |LUT1       |   197|
+|5     |LUT2       |  1107|
+|6     |LUT3       |   543|
+|7     |LUT4       |   485|
+|8     |LUT5       |   501|
+|9     |LUT6       |  1039|
+|10    |MUXF7      |    16|
+|11    |FDCE       |  2340|
+|12    |FDPE       |     6|
+|13    |FDRE       |  1208|
+|14    |FDSE       |     8|
+|15    |IBUF       |    38|
+|16    |IOBUF      |    16|
+|17    |OBUF       |    30|
+|18    |OBUFT      |     1|
++------+-----------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:44 ; elapsed = 00:00:47 . Memory (MB): peak = 1869.496 ; gain = 1176.086
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:40 ; elapsed = 00:00:44 . Memory (MB): peak = 1917.047 ; gain = 1191.266
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 49 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:37 ; elapsed = 00:00:45 . Memory (MB): peak = 1869.496 ; gain = 1101.801
-Synthesis Optimization Complete : Time (s): cpu = 00:00:44 ; elapsed = 00:00:47 . Memory (MB): peak = 1869.496 ; gain = 1176.086
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:33 ; elapsed = 00:00:42 . Memory (MB): peak = 1917.047 ; gain = 1121.367
+Synthesis Optimization Complete : Time (s): cpu = 00:00:40 ; elapsed = 00:00:44 . Memory (MB): peak = 1917.047 ; gain = 1191.266
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.089 . Memory (MB): peak = 1878.621 ; gain = 0.000
-INFO: [Netlist 29-17] Analyzing 390 Unisim elements for replacement
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.054 . Memory (MB): peak = 1926.262 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 385 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 1882.254 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1929.902 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 16 instances were transformed.
   IOBUF => IOBUF (IBUF, OBUFT): 16 instances
 
-Synth Design complete | Checksum: 8410f11d
+Synth Design complete | Checksum: fe402159
 INFO: [Common 17-83] Releasing license: Synthesis
-48 Infos, 122 Warnings, 0 Critical Warnings and 0 Errors encountered.
+51 Infos, 119 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:50 ; elapsed = 00:00:55 . Memory (MB): peak = 1882.254 ; gain = 1343.305
-Write ShapeDB Complete: Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.029 . Memory (MB): peak = 1882.254 ; gain = 0.000
+synth_design: Time (s): cpu = 00:00:44 ; elapsed = 00:00:57 . Memory (MB): peak = 1929.902 ; gain = 1353.727
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.015 . Memory (MB): peak = 1929.902 ; gain = 0.000
 INFO: [Common 17-1381] The checkpoint 'C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/targeting/servo_encoder_v1_0.runs/synth_1/servo_enc_v1_0.dcp' has been generated.
 INFO: [Vivado 12-24828] Executing command : report_utilization -file servo_enc_v1_0_utilization_synth.rpt -pb servo_enc_v1_0_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Mon Apr 20 17:14:44 2026...
+INFO: [Common 17-206] Exiting Vivado at Fri Apr 24 10:03:51 2026...

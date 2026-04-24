@@ -1,4 +1,5 @@
-../Core/Src/fpga_access.c:10:6:WriteRegData32	4
-../Core/Src/fpga_access.c:35:10:ReadRegData32	2
-../Core/Src/fpga_access.c:56:10:StatusSet_ActualPosition	1
-../Core/Src/fpga_access.c:62:10:StatusGet_ActualPosition	1
+../Core/Src/fpga_access.c:9:6:WriteRegData32	4
+../Core/Src/fpga_access.c:34:10:ReadRegData32	2
+../Core/Src/fpga_access.c:54:10:StatusSet_ActualPosition	1
+../Core/Src/fpga_access.c:60:10:StatusGet_ActualPosition	1
+../Core/Src/fpga_access.c:68:10:ReadVendorId16	1

@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<wave_config>
+	<wave_state>
+	</wave_state>
+	<db_ref_list>
+		<db_ref path="C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/targeting/servo_encoder_v1_0.hw/hw_1/wave/hw_ila_data_3/hw_ila_data_3.wdb" id="1" type="auto">
+			<top_modules>
+				<top_module name="top">
+				</top_module>
+			</top_modules>
+		</db_ref>
+	</db_ref_list>
+	<WVObjectSize size="6">
+	</WVObjectSize>
+	<wvobject fp_name="ila_probe0" type="array" db_ref_id="1">
+		<obj_property name="ElementShortName">ila_probe0[0:0]</obj_property>
+		<obj_property name="ObjectShortName">ila_probe0[0:0]</obj_property>
+		<obj_property name="DisplayName">FullPathName</obj_property>
+		<obj_property name="Radix">HEXRADIX</obj_property>
+	</wvobject>
+	<wvobject fp_name="ila_probe1" type="array" db_ref_id="1">
+		<obj_property name="ElementShortName">ila_probe1[0:0]</obj_property>
+		<obj_property name="ObjectShortName">ila_probe1[0:0]</obj_property>
+		<obj_property name="DisplayName">FullPathName</obj_property>
+		<obj_property name="Radix">HEXRADIX</obj_property>
+	</wvobject>
+	<wvobject fp_name="ila_probe2" type="array" db_ref_id="1">
+		<obj_property name="ElementShortName">ila_probe2[0:0]</obj_property>
+		<obj_property name="ObjectShortName">ila_probe2[0:0]</obj_property>
+		<obj_property name="DisplayName">FullPathName</obj_property>
+		<obj_property name="Radix">HEXRADIX</obj_property>
+	</wvobject>
+	<wvobject fp_name="ila_probe3" type="array" db_ref_id="1">
+		<obj_property name="ElementShortName">ila_probe3[0:0]</obj_property>
+		<obj_property name="ObjectShortName">ila_probe3[0:0]</obj_property>
+		<obj_property name="DisplayName">FullPathName</obj_property>
+		<obj_property name="Radix">HEXRADIX</obj_property>
+	</wvobject>
+	<wvobject fp_name="ila_probe4" type="array" db_ref_id="1">
+		<obj_property name="ElementShortName">ila_probe4[0:0]</obj_property>
+		<obj_property name="ObjectShortName">ila_probe4[0:0]</obj_property>
+		<obj_property name="DisplayName">FullPathName</obj_property>
+		<obj_property name="Radix">HEXRADIX</obj_property>
+	</wvobject>
+	<wvobject fp_name="counter_data1_lo[1]" type="array" db_ref_id="1">
+		<obj_property name="ElementShortName">counter_data1_lo[1][31:0]</obj_property>
+		<obj_property name="ObjectShortName">counter_data1_lo[1][31:0]</obj_property>
+		<obj_property name="DisplayName">FullPathName</obj_property>
+		<obj_property name="Radix">HEXRADIX</obj_property>
+	</wvobject>
+</wave_config>
+

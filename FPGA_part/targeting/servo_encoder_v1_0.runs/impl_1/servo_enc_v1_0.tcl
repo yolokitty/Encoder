@@ -104,6 +104,7 @@ start_step init_design
 set ACTIVE_STEP init_design
 set rc [catch {
   create_msg_db init_design.pb
+  set_param tcl.collectionResultDisplayLimit 0
   set_param general.usePosixSpawnForFork 1
   set_param chipscope.maxJobs 5
   set_param xicom.use_bs_reader 1
@@ -118,9 +119,11 @@ OPTRACE "set parameters" START { }
   set_property parent.project_path C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/targeting/servo_encoder_v1_0.xpr [current_project]
   set_property ip_output_repo C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/targeting/servo_encoder_v1_0.cache/ip [current_project]
   set_property ip_cache_permissions {read write} [current_project]
+  set_property XPM_LIBRARIES {XPM_CDC XPM_MEMORY} [current_project]
 OPTRACE "set parameters" END { }
 OPTRACE "add files" START { }
   add_files -quiet C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/targeting/servo_encoder_v1_0.runs/synth_1/servo_enc_v1_0.dcp
+  read_ip -quiet C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/targeting/servo_encoder_v1_0.srcs/sources_1/ip/ila_0_1/ila_0.xci
 OPTRACE "read constraints: implementation" START { }
   read_xdc C:/Users/RESEARCH/Downloads/Quadrature/Quadrature/FPGA_part/source/servo_enc.xdc
 OPTRACE "read constraints: implementation" END { }
@@ -288,6 +291,7 @@ set rc [catch {
   create_msg_db write_bitstream.pb
 OPTRACE "read constraints: write_bitstream" START { }
 OPTRACE "read constraints: write_bitstream" END { }
+  set_property XPM_LIBRARIES {XPM_CDC XPM_MEMORY} [current_project]
   catch { write_mem_info -force -no_partial_mmi servo_enc_v1_0.mmi }
 OPTRACE "write_bitstream setup" END { }
 OPTRACE "write_bitstream" START { }

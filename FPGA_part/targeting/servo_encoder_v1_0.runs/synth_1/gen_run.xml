@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7s15ftgb196-1" LaunchTime="1776672818" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/servo_enc_v1_0.dcp">
+<GenRun Id="synth_1" LaunchPart="xc7s15ftgb196-1" LaunchTime="1776992556" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/servo_enc_v1_0.dcp">
   <File Type="PA-TCL" Name="servo_enc_v1_0.tcl"/>
   <File Type="REPORTS-TCL" Name="servo_enc_v1_0_reports.tcl"/>
   <File Type="RDS-RDS" Name="servo_enc_v1_0.vds"/>
@@ -11,6 +11,13 @@
   <File Type="VDS-TIMING-PB" Name="servo_enc_v1_0_timing_summary_synth.pb"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
     <Filter Type="Srcs"/>
+    <File Path="$PSRCDIR/sources_1/ip/ila_0_1/ila_0.xci">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
     <File Path="$PPRDIR/../source/servo_enc_lib_v1_0.vhd">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
